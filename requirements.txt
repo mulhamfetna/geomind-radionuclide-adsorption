@@ -1,0 +1,30 @@
+# Core scientific stack
+numpy
+pandas
+scipy
+scikit-learn
+
+# Deep learning — GEOMIND uses paired variational autoencoders
+torch
+
+# Visualisation
+matplotlib
+seaborn
+
+# Data I/O
+openpyxl          # .xlsx
+xlrd              # legacy .xls  (data/raw/N data.xls)
+
+# Literature processing
+pdfplumber        # text/table extraction from the paper corpus
+
+# Notebooks
+jupyterlab
+ipywidgets
+
+# Config / utilities
+pyyaml
+tqdm
+
+# Virtual Lab (local Gradio app — app/lab.py)
+gradio>=4.44

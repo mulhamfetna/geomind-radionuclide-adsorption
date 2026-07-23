@@ -1,0 +1,64 @@
+# ---------------------------------------------------------------
+# Environments
+# ---------------------------------------------------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------
+# Third-party literature — NEVER committed.
+# These are copyrighted publications held as personal research
+# copies. They are tracked reproducibly via papers/MANIFEST.md
+# (filename + size + SHA-256 + source DOI), not redistributed.
+# ---------------------------------------------------------------
+papers/**/*.pdf
+papers/**/*.html
+papers/**/*.docx
+papers/**/*.doc
+
+# ---------------------------------------------------------------
+# Derived data — regenerable from data/raw + src. Keep the repo
+# lean and force reproducibility through code, not artifacts.
+# (data/raw IS committed: it is our compiled research database.)
+# ---------------------------------------------------------------
+data/interim/
+# data/processed/ IS committed: these derived CSVs are small and the analysis
+# pipeline reads them directly, so a fresh clone must reproduce every number.
+# (Regenerate with the cleaning pipeline; see reports/.)
+
+
+# Model artifacts / run outputs
+models/
+runs/
+*.ckpt
+*.pt
+*.joblib
+reports/figures/*.png
+
+# ---------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ---------------------------------------------------------------
+# External third-party datasets — bulk binaries (SEM/XRD/FTIR/raw
+# instrument files). Tracked via papers/MANIFEST.md; the tidy
+# extracts under data/raw/external/ ARE committed.
+# ---------------------------------------------------------------
+data/external/
+
+# Warehouse is rebuilt from sources by src/geomind/warehouse.py.
+# The 31 MB SQLite DB stays out of git; its 91-row veracity summary is committed
+# as data/warehouse/audit_summary.csv so the audit trail works in a fresh clone.
+data/warehouse/*
+!data/warehouse/audit_summary.csv
+dist/

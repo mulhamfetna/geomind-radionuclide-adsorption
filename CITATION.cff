@@ -1,0 +1,60 @@
+cff-version: 1.2.0
+message: "If you use this software or dataset in your research, please cite it as below."
+title: >-
+  GEOMIND-R: An Audited Database, Structural Descriptor and Forward Model for
+  Radionuclide Uptake in Geopolymers
+abstract: >-
+  An audited, provenance-tracked meta-analysis database of caesium and strontium
+  uptake and immobilisation in geopolymers and alkali-activated materials, together
+  with the analysis pipeline and an interactive exploration tool. The work
+  establishes that framework aluminium (tetrahedral Al-IV), not specific surface
+  area, governs cation uptake — evidenced by correlation, a within-sample causal
+  leaching test, and published atomic-scale spectroscopy — and delivers a
+  within-class forward model that predicts held-out samples (leave-one-out
+  R-squared 0.81) under an explicit domain guard. It further shows that the same
+  descriptor-property relationship does not survive cross-laboratory pooling
+  (leave-one-out R-squared below zero), a general caution for materials-informatics
+  meta-analysis, and contributes reusable screening methods including a Langmuir
+  saturation screen that flags extrapolation artefacts in reported capacities.
+type: software
+authors:
+  - family-names: Fetna
+    given-names: Mulham
+    orcid: "https://orcid.org/0009-0006-4432-798X"
+  - family-names: Hammal
+    given-names: Abdulrazzaq
+    orcid: "https://orcid.org/0000-0003-1828-1376"
+version: "1.0.0"
+date-released: "2026-07-23"
+license: AGPL-3.0-or-later
+url: "https://github.com/mulhamfetna/geomind-radionuclide-adsorption"
+repository-code: "https://github.com/mulhamfetna/geomind-radionuclide-adsorption"
+keywords:
+  - geopolymer
+  - alkali-activated materials
+  - radionuclide immobilisation
+  - caesium-137
+  - strontium-90
+  - ion exchange
+  - framework aluminium
+  - nuclear waste
+  - materials informatics
+  - meta-analysis
+references:
+  - type: article
+    title: >-
+      GEOMIND: a hybrid generative model for geopolymer formulation design
+    doi: "10.1039/d5dd00383k"
+    notes: >-
+      The reference work this project set out to replicate and extend. Licensed
+      CC-BY-NC 4.0 by its authors; cited, not redistributed.
+# DOI: once the Zenodo record is minted, add the concept (all-versions) DOI here
+#      and list concept + version DOIs under `identifiers:`. Example:
+# doi: "10.5281/zenodo.XXXXXXX"
+# identifiers:
+#   - type: doi
+#     value: "10.5281/zenodo.XXXXXXX"      # concept DOI (all versions)
+#     description: "Concept DOI — always resolves to the latest version"
+#   - type: doi
+#     value: "10.5281/zenodo.YYYYYYY"      # this version's DOI
+#     description: "Version 1.0.0"

@@ -1,0 +1,20 @@
+Column,Description,Unit,Source
+FlyAsh,Amount of fly ash,kg/m³,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+GGBFS,Amount of ground granulated blast furnace slag,kg/m³,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+Metakaolin,Amount of metakaolin,%,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+NaOH_M,Molar concentration of sodium hydroxide,Molar,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+Na2SiO3,Amount of sodium silicate,kg/m³,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+CopperSlag,Amount of copper slag,kg/m³,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+RecycledAgg,Amount of recycled aggregate,kg/m³,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+Curing_Days,Curing time,days,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+Si_Al,Silica to alumina molar ratio,-,Calculated
+Comp_Strength,Compressive strength,MPa,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+Density,Material density,g/cm³,GEOMIND_R_MASTER_DATABASE_v2.xlsx
+Qmax_Cs,Maximum adsorption capacity for cesium,mg/g,GEOMIND_RADIOACTIVE_MASTER.xlsx
+Qmax_Sr,Maximum adsorption capacity for strontium,mg/g,GEOMIND_RADIOACTIVE_MASTER.xlsx
+b_L_mg,Langmuir constant (affinity),L/mg,GEOMIND_RADIOACTIVE_MASTER.xlsx
+E_kJ_mol,Mean free energy of adsorption,kJ/mol,GEOMIND_RADIOACTIVE_MASTER.xlsx
+R2_Langmuir,R-squared for Langmuir fit,-,GEOMIND_RADIOACTIVE_MASTER.xlsx
+Source,Reference source,-,GEOMIND_RADIOACTIVE_MASTER.xlsx
+Sorbent_Type,Type of geopolymer sorbent,-,GEOMIND_RADIOACTIVE_MASTER.xlsx
+Temp_K,Temperature for adsorption experiments,K,GEOMIND_RADIOACTIVE_MASTER.xlsx

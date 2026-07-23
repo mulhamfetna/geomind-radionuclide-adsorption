@@ -1,0 +1,92 @@
+source_file,source_table,n_rows,veracity,utility,reason
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Feasibility_Ranges,9,FALSE,DISCARD,F6: constants verbatim from retired tool v1.0.0; rejects 7/9 feasible samples
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Sr_Immobilization_Mechanisms,9,FALSE,DISCARD,AUDIT F11: NO source column at all + 66.7% internal duplication. Same signature as the fabricated Na-MK/K-MK rows (F7). Untraceable and largely repeated - do not use.
+data/raw/Physical_Data.csv,_,867,PROBABLE,SUPPORTING,"Concrete strength; Si_Al/Density/Metakaolin dropped (F1,F2)"
+data/raw/Physical_Data.xlsx,ورقة2,867,PROBABLE,SUPPORTING,"Concrete strength; Si_Al/Density/Metakaolin dropped (F1,F2)"
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,GEOMIND_Parameters,55,PROBABLE,SUPPORTING,Model/GEOMIND parameter list; descriptive
+data/raw/Functional_Data.csv,_,28,PROBABLE,CORE,Hand-compiled Cs/Sr capacities; 10/31 expanded rows failed audit (F7)
+data/raw/Functional_Data.xlsx,ورقة3,28,PROBABLE,CORE,Hand-compiled Cs/Sr capacities; 10/31 expanded rows failed audit (F7)
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Adsorption_Isotherms,21,REDUNDANT,DISCARD,F8: duplicates Functional_Data incl. fabricated Na-MK/K-MK; 3 extra values are Co-60
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Thermodynamics_Expanded,18,REDUNDANT,DISCARD,Same shape/columns as Thermodynamics
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Cs_Isotherms,15,REDUNDANT,DISCARD,F8: strict subset of Adsorption_Isotherms
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Summary_Statistics_GEOMIND_R,13,REDUNDANT,DISCARD,Derived summary of other sheets
+data/raw/GEOMIND_R_MASTER_DATABASE_v2.xlsx,Sheet1,867,UNVERIFIED,DISCARD,"F4: disagrees with Physical_Data in 22 cells, no changelog"
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Surface_Complexation,38,UNVERIFIED,CONTEXT,"AUDIT: Source column cites 'Eq. (10)-(12)' - EQUATION references, not data sources. These are model outputs, not measurements. Cannot be source-verified."
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Leaching_Model_Comparison,24,UNVERIFIED,CONTEXT,Leaching model fits
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Thermodynamics,18,UNVERIFIED,CONTEXT,"dG/dH/dS; explains temperature trends, not capacity"
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,MD_Simulation_Sr_Cs,18,UNVERIFIED,CONTEXT,"AUDIT: cites Duque_Redondo_2023 (not held). Simulation output, not measurement."
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,FTIR_Sr_Characterization,18,UNVERIFIED,SUPPORTING,AUDIT: 88.9% internal duplication - near-zero information content.
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Surface_Complexation_Sr,15,UNVERIFIED,CONTEXT,"AUDIT: cites Yildirim_2024, a paper we do NOT hold. Unverifiable until acquired."
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Mass_Transport_Models_Sr,12,UNVERIFIED,CONTEXT,Diffusivity/transport models
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,XRD_Sr_Phases,11,UNVERIFIED,SUPPORTING,AUDIT: 72.7% internal duplication. Cites Kim_2026 (not held).
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Sr_Leaching_Data,10,UNVERIFIED,CONTEXT,AUDIT: cites Kim_2026/Nevin_2026/Yildirim_2024; only Nevin held. 54.8% duplication.
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Zeolite_Comparison_Sr_Cs,8,UNVERIFIED,CONTEXT,AUDIT: cites Duque_Redondo_2023 (not held). 21.9% duplication.
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,EXAFS_Sr_Structural_Parameters,8,UNVERIFIED,SUPPORTING,AUDIT: 31.2% duplication; cites Kim_2026 (not held). Verify before feature use.
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Magnetic_Properties,3,UNVERIFIED,CONTEXT,Magnetisation of magnetic composites; niche
+data/external/aam-oulu-2026/2. Characterization data/1. Characterization of precursors/XRD precursors/All XRD data (precursors).xlsx,Sheet1,5001,VERIFIED_TRUE,SUPPORTING,Raw XRD diffractograms; phase ID - supports crystallinity descriptors
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/XRD AAMs & geopolymers/All XRD data (AAM & geopolymer).xlsx,AAMs and geopolymer XRD,5001,VERIFIED_TRUE,SUPPORTING,Raw XRD diffractograms; phase ID - supports crystallinity descriptors
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/Si NMR AAMs & geopolymers/All data.xlsx,Sheet1,2049,VERIFIED_TRUE,SUPPORTING,Raw 29Si MAS-NMR spectra; needs deconvolution to yield Q4(mAl) (see NMR plan)
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/FTIR AAMs & geopolymers/All FTIR data.xlsx,FTIR data,1868,VERIFIED_TRUE,SUPPORTING,Raw FTIR spectra; Si-O-T band positions track network polymerisation
+data/raw/Data.xlsx,Sheet1,672,VERIFIED_TRUE,SUPPORTING,Upstream source of Physical_Data strengths
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-10,192,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-11,192,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/raw/N data.xls,Sheet1,186,VERIFIED_TRUE,SUPPORTING,Second upstream strength source
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-1,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-2,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-3,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-4,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-5,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-6,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-7,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-8,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 1-11.xlsx,S-9,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-12,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-13,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-14,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-15,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-16,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-17,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-18,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-19,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/PSD AAMs & geopolymers/Sample 12-20.xlsx,S-20,186,VERIFIED_TRUE,SUPPORTING,Particle size distributions
+"data/external/aam-oulu-2026/2. Characterization data/1. Characterization of precursors/XRF precursors/Sample 1-10 & 17, 18, 19, 20.xlsx",Sheet1,101,VERIFIED_TRUE,CORE,XRF elemental composition - the measured basis for Si/Al
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/XRF AAMs & geopolymers/XRF_AAMs and geopolymers.xlsx,elem.,76,VERIFIED_TRUE,CORE,XRF elemental composition - the measured basis for Si/Al
+data/external/aam-oulu-2026/3. Adsorption data/MB.xlsx,MB adsorption experiment,67,VERIFIED_TRUE,CORE,"Oulu batch adsorption workbooks (NH4+, MB, R6G)"
+data/external/aam-oulu-2026/3. Adsorption data/R6G.xlsx,R6G adsorption experiment,67,VERIFIED_TRUE,CORE,"Oulu batch adsorption workbooks (NH4+, MB, R6G)"
+data/raw/external/oulu2026_adsorption.csv,_,63,VERIFIED_TRUE,CORE,Oulu tidy extract; NH4+/dyes with BET
+data/external/aam-oulu-2026/2. Characterization data/1. Characterization of precursors/XRF precursors/Sample 11-16.xlsx,Sheet1,55,VERIFIED_TRUE,CORE,XRF elemental composition - the measured basis for Si/Al
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,Validation_Samples,45,VERIFIED_TRUE,CORE,"Paper Table S5, 15 samples x 3 property types"
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/XRF AAMs & geopolymers/XRF_AAMs and geopolymers.xlsx,oxide list,29,VERIFIED_TRUE,CORE,XRF elemental composition - the measured basis for Si/Al
+"data/external/aam-oulu-2026/2. Characterization data/1. Characterization of precursors/XRF precursors/Sample 1-10 & 17, 18, 19, 20.xlsx",Sheet2,28,VERIFIED_TRUE,CORE,XRF elemental composition - the measured basis for Si/Al
+data/external/aam-oulu-2026/3. Adsorption data/Ammonium ion.xlsx,NH4 adsorption experiment,27,VERIFIED_TRUE,CORE,"Oulu batch adsorption workbooks (NH4+, MB, R6G)"
+data/external/aam-oulu-2026/1. Material syntehesis data/Synthesis data.xlsx,XRF calculation of precusrsors,26,VERIFIED_TRUE,CORE,Designed Si:Al:Na:Ca ratios and reagent masses - the composition axis
+data/external/aam-oulu-2026/1. Material syntehesis data/Synthesis data.xlsx,XRF calculation of AAMs,26,VERIFIED_TRUE,CORE,Designed Si:Al:Na:Ca ratios and reagent masses - the composition axis
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/Zeta potential AAMs & geopolymers/Zeta Potential.xlsx,Zeta potential,26,VERIFIED_TRUE,SUPPORTING,"Zeta potential; surface charge, mechanistically relevant to cation uptake"
+data/external/aam-oulu-2026/1. Material syntehesis data/Synthesis data.xlsx,NaOH and water required,25,VERIFIED_TRUE,CORE,Designed Si:Al:Na:Ca ratios and reagent masses - the composition axis
+data/external/aam-oulu-2026/1. Material syntehesis data/Synthesis data.xlsx,Sample ID & Chemical,24,VERIFIED_TRUE,CORE,Designed Si:Al:Na:Ca ratios and reagent masses - the composition axis
+data/raw/Metadata.xlsx,ورقة2,20,VERIFIED_TRUE,SUPPORTING,Column dictionary; cp1256 encoded
+data/raw/Metadata.csv,_,19,VERIFIED_TRUE,SUPPORTING,Column dictionary; cp1256 encoded
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,GEOMIND_Samples,10,VERIFIED_TRUE,CORE,Paper's 10 published samples; schema matches authors' CSV
+data/raw/GEOMIND_RADIOACTIVE_MASTER.xlsx,NMR_Sr_Cs_Data,10,VERIFIED_TRUE,SUPPORTING,Q4(mAl) for Nevin 2026; NOT transplanted (0 matches to Varon); single formulation Si/Al=3
+data/external/aam-oulu-2026/3. Adsorption data/MB.xlsx,STD curve,10,VERIFIED_TRUE,CORE,"Oulu batch adsorption workbooks (NH4+, MB, R6G)"
+data/external/aam-oulu-2026/3. Adsorption data/R6G.xlsx,STD Curve,8,VERIFIED_TRUE,CORE,"Oulu batch adsorption workbooks (NH4+, MB, R6G)"
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-1.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-10.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-11.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-12.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-13.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-14.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-15.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-16.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-17.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-18.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-19.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-2.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-20.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-3.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-4.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-5.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-6.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-7.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-8.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
+data/external/aam-oulu-2026/2. Characterization data/2. Characterization data of AAMs and geopolymers/BET-BJH AAMs & geopolymers/S-9.xls,_ERROR_,1,VERIFIED_TRUE,SUPPORTING,BET/BJH isotherms; surface area and porosity
