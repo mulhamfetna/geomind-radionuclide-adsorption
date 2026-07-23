@@ -1,0 +1,54 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run the test suite
+        env:
+          MPLBACKEND: Agg
+          PYTHONPATH: src
+        run: pytest -q
+
+      - name: Verify the published numbers reproduce from a clean checkout
+        env:
+          MPLBACKEND: Agg
+          PYTHONPATH: src
+        run: |
+          python - <<'PY'
+          import sys; sys.path.insert(0, ".")
+          from app import engine as E
+          h = E.rerun_headline_numbers()
+          assert len(E.load_pool("A")) == 141, "Pool A row count changed"
+          assert len(E.load_pool("B")) == 54, "Pool B row count changed"
+          assert len(E.load_audit_summary()) == 91, "audit trail row count changed"
+          assert abs(h["forward_r2_loo"] - 0.811) < 0.01, h["forward_r2_loo"]
+          assert h["pooled_r2"] < 0, h["pooled_r2"]
+          print("headline numbers reproduce:", {k: round(v, 3) for k, v in h.items()})
+          PY

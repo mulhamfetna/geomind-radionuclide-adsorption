@@ -78,6 +78,25 @@ CC BY 4.0; both require attribution. Releases are archived to Zenodo with a pers
 [@geomindr]. A source-data workbook containing the exact values behind every published figure is
 regenerated from the live pipeline and distributed with the package.
 
+# AI usage disclosure
+
+**Tools used.** Anthropic Claude (Opus 4.8), accessed through the Claude Code command-line
+interface, was used during development of the software and preparation of this paper.
+
+**Nature and scope of assistance.** Code generation and refactoring; test scaffolding under a
+test-first workflow; assistance with data extraction and tabulation from the source literature;
+generation of figure-plotting code; drafting and copy-editing of documentation and of this
+manuscript's text.
+
+**Confirmation of review.** The human authors reviewed, edited and validated all AI-assisted
+outputs. All core design decisions — the scientific framing, the choice of descriptor, the two-pool
+data architecture, the decision to constrain the model to a single structural class, and the
+decision to report the negative cross-laboratory pooling result rather than a generative model —
+were made by the human authors. Every data value was checked against its primary published source
+by the human authors before inclusion; the provenance and veracity record in the repository
+documents that audit. The authors take full responsibility for the accuracy, originality and
+licensing compliance of all submitted material.
+
 # Acknowledgements
 
 We thank the authors of the reference work [@geomind] for the study that motivated this project.
