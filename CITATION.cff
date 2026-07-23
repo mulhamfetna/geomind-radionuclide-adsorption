@@ -26,7 +26,9 @@ authors:
     orcid: "https://orcid.org/0000-0003-1828-1376"
 version: "1.0.0"
 date-released: "2026-07-23"
-license: AGPL-3.0-or-later
+license:
+  - AGPL-3.0-or-later   # software
+  - CC-BY-4.0           # data, figures, documentation
 url: "https://github.com/mulhamfetna/geomind-radionuclide-adsorption"
 repository-code: "https://github.com/mulhamfetna/geomind-radionuclide-adsorption"
 keywords:

@@ -3,14 +3,22 @@
 © 2026 **Mulham Fetna** ([ORCID 0009-0006-4432-798X](https://orcid.org/0009-0006-4432-798X))
 and **Dr. Abdulrazzaq Hammal** ([ORCID 0000-0003-1828-1376](https://orcid.org/0000-0003-1828-1376)).
 
-## License
+## License — two licenses, split by content type
 
-This repository is released under the **GNU Affero General Public License v3.0 or later**
-(AGPL-3.0-or-later). The full text is in [`LICENSE`](LICENSE).
+| Content | License | Paths |
+|---|---|---|
+| **Software** | **AGPL-3.0-or-later** ([`LICENSE`](LICENSE)) | `src/`, `app/`, `tests/`, `notebook_lab/*.py`, `manuscript/figures.py`, `notebooks/*.ipynb` |
+| **Data, figures & documentation** | **CC BY 4.0** ([`LICENSE-DATA`](LICENSE-DATA)) | `data/`, `knowledge_base/`, `notebook_lab/lab_bundle.json`, `manuscript/figures/`, `docs/`, `reports/`, `papers/MANIFEST.md`, and the Markdown documentation |
 
-The license covers the software **and** the compiled datasets, analysis outputs and documentation
-authored by us. If you run a modified version of this work as a network service, the AGPL requires
-you to offer users the corresponding source.
+**Both licenses require attribution.** If you use the database, the figures or any derived numbers,
+**you must credit us** — cite the DOI in [`CITATION.cff`](CITATION.cff). If you modify the software
+and run it as a network service, the AGPL additionally requires you to offer users the
+corresponding source.
+
+*Why the split:* AGPL is a software license and maps poorly onto a CSV — "corresponding source" has
+no clear meaning for data. **CC BY 4.0** is the standard for research data: it keeps attribution
+legally binding while remaining compatible with journal data-availability policies and with reuse
+by other laboratories. Nothing is given away — credit is still a condition of use.
 
 If you use this work in research, please cite it — see [`CITATION.cff`](CITATION.cff) and the
 *Citation & DOI* section of the [README](README.md).

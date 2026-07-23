@@ -1,6 +1,7 @@
 # GEOMIND-R — Framework Aluminium Governs Radionuclide Uptake in Geopolymers
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
+[![Code: AGPL v3](https://img.shields.io/badge/code-AGPL--3.0-blue.svg)](LICENSE)
+[![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
 [![DOI](https://zenodo.org/badge/1309918660.svg)](https://zenodo.org/badge/latestdoi/1309918660)
 [![Tests](https://img.shields.io/badge/tests-177%20passing-brightgreen.svg)](tests/)
 
@@ -207,8 +208,14 @@ in [`CITATION.cff`](CITATION.cff) — GitHub renders a **"Cite this repository"*
 
 ## License
 
-Released under the **GNU Affero General Public License v3.0 or later** — see [`LICENSE`](LICENSE).
-The license covers the software and the compiled datasets and documentation authored by us. The
+Two licenses, split by content type — **both require attribution**:
+
+| Content | License |
+|---|---|
+| Software (`src/`, `app/`, `tests/`, `notebook_lab/*.py`, notebooks) | **AGPL-3.0-or-later** — [`LICENSE`](LICENSE) |
+| Data, figures & documentation (`data/`, `knowledge_base/`, `reports/`, `docs/`, `manuscript/figures/`) | **CC BY 4.0** — [`LICENSE-DATA`](LICENSE-DATA) |
+
+If you use the database, the figures or any derived number, **you must cite us** (see above). The
 source publications analysed here remain the copyright of their publishers and are **not**
 redistributed; see [`NOTICE.md`](NOTICE.md) for third-party materials and attribution.
 
