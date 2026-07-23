@@ -12,7 +12,7 @@ def test_bundle_has_all_sections_with_expected_sizes():
     assert len(b["pool_a"]) == 141
     assert len(b["pool_b"]) == 54
     assert len(b["audit"]) == 91
-    assert len(b["findings"]) == 37
+    assert len(b["findings"]) == 40
     assert len(b["decisions"]) == 17
     assert len(b["forward"]["training"]) == 7
     assert {"fig1", "fig2", "fig4", "fig6"} <= set(b["figures"])

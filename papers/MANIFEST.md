@@ -4,7 +4,7 @@
 > research copies (see `.gitignore`). This manifest makes the corpus *reproducible and
 > auditable* — retrieve each item from its source, then verify the SHA-256 prefix.
 
-_Generated: 2026-07-19 — 19 documents_
+_Manifest header last updated: 2026-07-23. Rows 1–19 authored 2026-07-19; rows 20–24 are batch-6 (2026-07-23). NOTE: the reference corpus on disk now holds more files than are tabulated here — full reconciliation is tracked as a separate task._
 
 | # | Type | File | MB | SHA-256 (16) | Source DOI / URL |
 |---|------|------|----|--------------|------------------|
@@ -27,6 +27,11 @@ _Generated: 2026-07-19 — 19 documents_
 | 17 | REF | `wst2019209supp.docx` | 1.73 | `e470c47515b87639` | _TBD_ |
 | 18 | REF | `ذري 1.pdf` | 6.14 | `0bc7f2e9bb1072ef` | _TBD_ |
 | 19 | REF | `ذري 2.pdf` | 1.56 | `c28638407576f278` | _TBD_ |
+| 20 | REF | `walkley2020.pdf` | 3.93 | `67b3bdcbc529eabe` | 10.1016/j.jhazmat.2019.121015 |
+| 21 | REF | `blackford2007.pdf` | 0.94 | `a7e5f82e6bb8e940` | 10.1111/j.1551-2916.2007.01532.x |
+| 22 | REF | `perera2004.pdf` | 0.28 | `82508fa15e3f19e0` | MRS Symp. Proc. 824, CC8.35 (2004) |
+| 23 | REF | `822897.pdf` | 32.0 | `76a51564aefc1729` | ISBN 978-3-95806-559-8 (RWTH/FZJ, 2020) |
+| 24 | REF | `Muracchioli_Mattia_1128630.pdf` | 3.74 | `ede9edd06f7f82a5` | MSc thesis, Univ. Padua (2019) |
 
 ## Associated datasets
 
@@ -42,3 +47,4 @@ _Generated: 2026-07-19 — 19 documents_
   "proof that adsorption is related to composition") is the **companion paper** to the
   Oulu dataset and is the strongest direct evidence for this project's core hypothesis.
 - `_TBD_` DOIs are filled in during M6. Every compiled data row must trace to an entry here.
+- **Batch-6 (2026-07-23), rows 20–24:** five papers triaged and read inline. `walkley2020` and `822897` (Weigelt dissertation) are structural (NMR/XRD) — mechanism evidence, no data rows (see findings F38, F40). `blackford2007` and `perera2004` (ANSTO) report no primary quantitative uptake/leach data of their own. `Muracchioli_Mattia_1128630` is out of scope (heavy-metal adsorption, not Cs/Sr). None add pool rows; see F40.

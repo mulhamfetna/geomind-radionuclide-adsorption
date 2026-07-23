@@ -148,7 +148,7 @@ def test_load_pool_a_and_b_row_counts():
 def test_load_findings_and_decisions_counts():
     f = E.load_findings()
     d = E.load_decisions()
-    assert len(f) == 37 and all("id" in x and "title" in x for x in f)
+    assert len(f) == 40 and all("id" in x and "title" in x for x in f)
     assert len(d) == 17
 
 
