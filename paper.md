@@ -14,10 +14,12 @@ authors:
     affiliation: 1
   - name: Abdulrazzaq Hammal
     orcid: 0000-0003-1828-1376
-    affiliation: 1
+    affiliation: 2
 affiliations:
-  - name: AFFILIATION TO BE COMPLETED BEFORE SUBMISSION
+  - name: Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria
     index: 1
+  - name: Department of Basic Science - Chemistry, Faculty of Electrical Engineering, University of Aleppo, Aleppo, Syria
+    index: 2
 date: 23 July 2026
 bibliography: paper.bib
 ---

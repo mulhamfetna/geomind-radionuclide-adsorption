@@ -9,11 +9,13 @@
   "creators": [
     {
       "name": "Fetna, Mulham",
-      "orcid": "0009-0006-4432-798X"
+      "orcid": "0009-0006-4432-798X",
+      "affiliation": "Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering, University of Aleppo, Aleppo, Syria"
     },
     {
       "name": "Hammal, Abdulrazzaq",
-      "orcid": "0000-0003-1828-1376"
+      "orcid": "0000-0003-1828-1376",
+      "affiliation": "Department of Basic Science - Chemistry, Faculty of Electrical Engineering, University of Aleppo, Aleppo, Syria"
     }
   ],
   "keywords": [
