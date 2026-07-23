@@ -62,3 +62,16 @@ data/external/
 data/warehouse/*
 !data/warehouse/audit_summary.csv
 dist/
+
+# --- Withheld from the public repository -------------------------------------
+# Manuscript prose is withheld pending journal submission and peer review
+# (see manuscript/README.md). Kept locally; never committed here. The figure
+# code and rendered figures ARE tracked.
+manuscript/draft-*.md
+manuscript/full-draft.md
+manuscript/manuscript-submission.*
+manuscript/paper-outline.md
+manuscript/table3.md
+
+# Private correspondence drafts addressed to third parties — never published.
+docs/correspondence/
