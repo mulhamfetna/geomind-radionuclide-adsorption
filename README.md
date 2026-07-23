@@ -3,14 +3,17 @@
 [![Code: AGPL v3](https://img.shields.io/badge/code-AGPL--3.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
 [![DOI](https://zenodo.org/badge/1309918660.svg)](https://zenodo.org/badge/latestdoi/1309918660)
-[![Tests](https://img.shields.io/badge/tests-177%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-181%20passing-brightgreen.svg)](tests/)
 
 An **audited, provenance-tracked meta-analysis database** of caesium and strontium uptake and
 immobilisation in geopolymers and alkali-activated materials — with the analysis pipeline, a
 validated forward model, and an interactive lab to explore it.
 
-**Lead author / investigator:** Mulham Fetna — [ORCID 0009-0006-4432-798X](https://orcid.org/0009-0006-4432-798X)
-**Supervisor:** Dr. Abdulrazzaq Hammal — [ORCID 0000-0003-1828-1376](https://orcid.org/0000-0003-1828-1376)
+**Mulham Fetna** (lead author) · Dept. of Mechatronics Engineering, Faculty of Electrical and
+Electronic Engineering, University of Aleppo — [ORCID 0009-0006-4432-798X](https://orcid.org/0009-0006-4432-798X)
+**Dr. Abdulrazzaq Hammal** (supervisor) · Dept. of Basic Science – Chemistry, Faculty of Electrical
+Engineering, University of Aleppo — [ORCID 0000-0003-1828-1376](https://orcid.org/0000-0003-1828-1376)
+📬 Contact details: [Authors & contact](#authors--contact)
 
 ---
 
@@ -112,8 +115,10 @@ papers/
   MANIFEST.md    checksummed index of the corpus     ← committed
 data/
   raw/           compiled research database          ← committed
+  processed/     model-ready datasets                ← committed (needed to reproduce)
+  source-data/   values behind every figure (.xlsx)  ← committed
+  warehouse/     audit_summary.csv (veracity trail)  ← committed (31 MB DB is not)
   interim/       cleaning intermediates              (regenerable)
-  processed/     model-ready datasets                (regenerable)
 docs/
   paper-analysis/  reproduction specification of GEOMIND
 src/geomind/     implementation
@@ -180,6 +185,28 @@ yielding a timestamped DOI that establishes priority while keeping contents conf
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+---
+
+## Authors & contact
+
+**Mulham Fetna** — lead author and investigator
+Department of Mechatronics Engineering, Faculty of Electrical and Electronic Engineering,
+University of Aleppo, Aleppo, Syria
+ORCID [0009-0006-4432-798X](https://orcid.org/0009-0006-4432-798X)
+✉ [mulham.fetna@alepuniv.edu.sy](mailto:mulham.fetna@alepuniv.edu.sy) ·
+[contact@mulhamfetna.com](mailto:contact@mulhamfetna.com) ·
+[Molhamfetneh@gmail.com](mailto:Molhamfetneh@gmail.com)
+
+**Dr. Abdulrazzaq Hammal** — supervisor
+Department of Basic Science – Chemistry, Faculty of Electrical Engineering,
+University of Aleppo, Aleppo, Syria
+ORCID [0000-0003-1828-1376](https://orcid.org/0000-0003-1828-1376)
+✉ [ab.hammal@alepuniv.edu.sy](mailto:ab.hammal@alepuniv.edu.sy) ·
+[hammal1986@gmail.com](mailto:hammal1986@gmail.com)
+
+Correspondence about this repository, the dataset, or reuse requests is welcome at any of the
+addresses above.
 
 ---
 

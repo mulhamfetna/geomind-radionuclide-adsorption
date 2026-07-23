@@ -11,6 +11,7 @@ authors:
   - name: Mulham Fetna
     orcid: 0009-0006-4432-798X
     corresponding: true
+    email: mulham.fetna@alepuniv.edu.sy
     affiliation: 1
   - name: Abdulrazzaq Hammal
     orcid: 0000-0003-1828-1376

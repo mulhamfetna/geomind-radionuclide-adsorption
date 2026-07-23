@@ -1,7 +1,11 @@
 # NOTICE — Copyright, licensing and third-party materials
 
 © 2026 **Mulham Fetna** ([ORCID 0009-0006-4432-798X](https://orcid.org/0009-0006-4432-798X))
-and **Dr. Abdulrazzaq Hammal** ([ORCID 0000-0003-1828-1376](https://orcid.org/0000-0003-1828-1376)).
+and **Dr. Abdulrazzaq Hammal** ([ORCID 0000-0003-1828-1376](https://orcid.org/0000-0003-1828-1376)),
+University of Aleppo, Aleppo, Syria.
+
+**Contact** — Mulham Fetna: mulham.fetna@alepuniv.edu.sy · contact@mulhamfetna.com ·
+Molhamfetneh@gmail.com | Abdulrazzaq Hammal: ab.hammal@alepuniv.edu.sy · hammal1986@gmail.com
 
 ## License — two licenses, split by content type
 
