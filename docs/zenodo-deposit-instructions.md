@@ -67,7 +67,7 @@ Then write them into:
 - [`README.md`](../README.md) — replace `ZENODO_CONCEPT_ID` / `ZENODO_VERSION_ID` in the
   *Citation & DOI* section and in the BibTeX block.
 
-The README DOI badge needs no editing — it uses the numeric repository id (`1306581360`) and
+The README DOI badge needs no editing — it uses the numeric repository id (`1309918660`) and
 resolves to the latest version automatically.
 
 ## Later versions

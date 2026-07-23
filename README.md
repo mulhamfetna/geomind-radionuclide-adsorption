@@ -1,7 +1,7 @@
 # GEOMIND-R — Framework Aluminium Governs Radionuclide Uptake in Geopolymers
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
-[![DOI](https://zenodo.org/badge/1306581360.svg)](https://zenodo.org/badge/latestdoi/1306581360)
+[![DOI](https://zenodo.org/badge/1309918660.svg)](https://zenodo.org/badge/latestdoi/1309918660)
 [![Tests](https://img.shields.io/badge/tests-177%20passing-brightgreen.svg)](tests/)
 
 An **audited, provenance-tracked meta-analysis database** of caesium and strontium uptake and
