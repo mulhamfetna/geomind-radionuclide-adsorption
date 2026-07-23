@@ -179,12 +179,72 @@ yielding a timestamped DOI that establishes priority while keeping contents conf
 - Work is tracked as GitHub **Issues** grouped under **Epics** and **Milestones**.
 - Nothing merges to `main` except via `dev` at a milestone boundary.
 
-## Environment
+## Installation
+
+Requires Python ≥ 3.10.
 
 ```bash
-python -m venv .venv && source .venv/bin/activate
+git clone https://github.com/mulhamfetna/geomind-radionuclide-adsorption.git
+cd geomind-radionuclide-adsorption
+python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
+
+Verify the installation — this reproduces every published number from a fresh clone:
+
+```bash
+PYTHONPATH=src python -m pytest -q          # 181 passing (8 warehouse tests skip by design)
+```
+
+## Example usage
+
+**Predict Sr K_D for a composition, with its confidence flag:**
+
+```python
+import sys; sys.path.insert(0, "src")
+from app import engine as E
+
+card = E.predict_kd(4.0)                     # framework [Al^IV] in mmol/g
+print(card.value, card.unit, card.flag.value) # 1988.0 mL/g validated
+print(card.why)                               # plain-language reason
+print(card.uncertainty)                       # LOO-CV RMSE, only when validated
+
+E.predict_kd(9.0).flag.value                  # 'exploratory'  — outside the trained range
+E.predict_kd(4.0, structural_class="zeolite").flag.value   # 'unsupported' — wrong class
+```
+
+**Screen a reported Langmuir capacity for an extrapolation artefact:**
+
+```python
+E.screen_saturation(b_L_mg=7.94e-5, c0_mg_L=2658.0).extra["verdict"]   # 'artefact'
+```
+
+**Browse the audited data and re-run the headline analyses:**
+
+```python
+len(E.load_pool("A")), len(E.load_pool("B"))   # (141, 54)
+E.rerun_headline_numbers()                      # forward R^2_LOO, pooled R^2, ARI correlations
+```
+
+**Launch the interactive Virtual Lab:**
+
+```bash
+PYTHONPATH=src python -m app.lab               # http://127.0.0.1:7860
+```
+
+**Regenerate the source-data workbook** (values behind every figure):
+
+```bash
+PYTHONPATH=src python -m geomind.source_data
+```
+
+## Support and contributing
+
+Questions, bug reports and contributions are welcome — see
+[`CONTRIBUTING.md`](CONTRIBUTING.md). Please open a
+[GitHub issue](https://github.com/mulhamfetna/geomind-radionuclide-adsorption/issues) for problems
+or feature requests, or contact the authors directly (below). All participants are expected to
+follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ---
 
