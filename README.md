@@ -193,8 +193,11 @@ pip install -r requirements.txt
 Verify the installation — this reproduces every published number from a fresh clone:
 
 ```bash
-PYTHONPATH=src python -m pytest -q          # 181 passing (8 warehouse tests skip by design)
+pytest                                      # 181 passing (8 warehouse tests skip by design)
 ```
+
+> Run commands from the **repository root**: the analysis modules resolve `data/` paths
+> relative to the working directory.
 
 ## Example usage
 
