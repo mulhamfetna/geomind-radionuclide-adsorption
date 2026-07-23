@@ -187,10 +187,9 @@ pip install -r requirements.txt
 If you use this software or dataset in your research, please cite it. Machine-readable metadata is
 in [`CITATION.cff`](CITATION.cff) — GitHub renders a **"Cite this repository"** button from it.
 
-<!-- After minting, replace ZENODO_CONCEPT_ID / ZENODO_VERSION_ID below. -->
-
-- **Concept DOI (always resolves to the latest version):** `10.5281/zenodo.ZENODO_CONCEPT_ID` — _pending first release_
-- **This version (1.0.0):** `10.5281/zenodo.ZENODO_VERSION_ID` — _pending first release_
+- **Concept DOI — cite this one** (always resolves to the latest version):
+  [`10.5281/zenodo.21510123`](https://doi.org/10.5281/zenodo.21510123)
+- **This version (1.0.0):** [`10.5281/zenodo.21510124`](https://doi.org/10.5281/zenodo.21510124)
 
 **BibTeX**
 
@@ -201,8 +200,8 @@ in [`CITATION.cff`](CITATION.cff) — GitHub renders a **"Cite this repository"*
              Forward Model for Radionuclide Uptake in Geopolymers}},
   year    = {2026},
   version = {1.0.0},
-  doi     = {10.5281/zenodo.ZENODO_CONCEPT_ID},
-  url     = {https://doi.org/10.5281/zenodo.ZENODO_CONCEPT_ID}
+  doi     = {10.5281/zenodo.21510123},
+  url     = {https://doi.org/10.5281/zenodo.21510123}
 }
 ```
 

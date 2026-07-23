@@ -48,13 +48,11 @@ references:
     notes: >-
       The reference work this project set out to replicate and extend. Licensed
       CC-BY-NC 4.0 by its authors; cited, not redistributed.
-# DOI: once the Zenodo record is minted, add the concept (all-versions) DOI here
-#      and list concept + version DOIs under `identifiers:`. Example:
-# doi: "10.5281/zenodo.XXXXXXX"
-# identifiers:
-#   - type: doi
-#     value: "10.5281/zenodo.XXXXXXX"      # concept DOI (all versions)
-#     description: "Concept DOI — always resolves to the latest version"
-#   - type: doi
-#     value: "10.5281/zenodo.YYYYYYY"      # this version's DOI
-#     description: "Version 1.0.0"
+doi: "10.5281/zenodo.21510123"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21510123"
+    description: "Concept DOI — always resolves to the latest version"
+  - type: doi
+    value: "10.5281/zenodo.21510124"
+    description: "Version 1.0.0"
