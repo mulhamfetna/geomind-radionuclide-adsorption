@@ -28,7 +28,7 @@ authors:
     orcid: "https://orcid.org/0000-0003-1828-1376"
     affiliation: "Department of Basic Science - Chemistry, Faculty of Electrical Engineering, University of Aleppo, Aleppo, Syria"
     email: "ab.hammal@alepuniv.edu.sy"
-version: "1.0.0"
+version: "1.1.0"
 date-released: "2026-07-23"
 license:
   - AGPL-3.0-or-later   # software
