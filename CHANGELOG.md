@@ -4,6 +4,41 @@ All notable changes to this project are documented here. Versions follow
 [semantic versioning](https://semver.org/); each tagged release is archived on Zenodo under the
 concept DOI [10.5281/zenodo.21510123](https://doi.org/10.5281/zenodo.21510123).
 
+## [1.2.0] — 2026-07-24
+
+**Data acquisition closed.** The release that pins the evidence base ahead of journal submission.
+
+### Added
+- **Study-level meta-analysis** (`src/geomind/meta.py`, `geomind.meta`) — the unit of analysis is
+  the *study*, not the sample. **k = 4 independent studies**, all in the predicted direction
+  (weighted mean r̄ = +0.771, 25 samples, exact sign test p = 0.0625), with three negative controls
+  that make the claim falsifiable and a full register of candidates **not** admitted. Inclusion
+  criteria were fixed *before* the screen was run; 4 of the 7 rejected candidates would have
+  *supported* the claim.
+- **Virtual Lab — new "Evidence · Study-level meta-analysis" tab** in **both** the desktop app and
+  the self-contained notebook, showing the studies, the controls, the rejection register with its
+  criteria, and the honest limits.
+- **Corpus manifest generator** (`src/geomind/manifest.py`) — regenerates `papers/MANIFEST.md` from
+  the corpus on disk plus the source registry, linking each file to the pool rows it supports.
+  Ends the manifest drift (it had tabulated 19 documents while 51 were present).
+- **Pool B adapters** for Vandevenne 2018 (14 rows) and Jain 2022 (5 rows); schema fields
+  `ca_si_al` (kept deliberately separate from `ca_al`) and `bet_m2_g`.
+- **Findings F38–F46** (register now 46), including the batch-6/7 reports, the n = 7 ceiling
+  analysis, the data-only strategy, and the laboratory campaign protocol.
+
+### Changed
+- **Pool B: 54 → 73 rows / 8 → 10 sources.** Pool A unchanged at 141.
+- `PROGRESS.md` carries a pinned **"data acquisition is closed"** block with the four findings
+  that justify it.
+- README states the study-level result as headline finding 6 and records the acquisition closure.
+
+### Fixed
+- The CI reproducibility guard now asserts the correct Pool B size (it caught the change itself).
+
+### Verified
+- **202 tests passing**; every headline number unchanged and re-verified from a clean checkout by
+  CI on Python 3.10–3.12: forward LOO-CV R² = 0.811, pooled R² = −0.092, framework r = 0.932 → 0.550.
+
 ## [1.1.0] — 2026-07-23
 
 **DOI:** [10.5281/zenodo.21511375](https://doi.org/10.5281/zenodo.21511375)

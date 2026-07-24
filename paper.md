@@ -21,7 +21,7 @@ affiliations:
     index: 1
   - name: Department of Basic Science - Chemistry, Faculty of Electrical Engineering, University of Aleppo, Aleppo, Syria
     index: 2
-date: 23 July 2026
+date: 24 July 2026
 bibliography: paper.bib
 ---
 
@@ -30,7 +30,7 @@ bibliography: paper.bib
 `GEOMIND-R` is a Python package and interactive "virtual laboratory" for exploring how geopolymer
 composition governs the uptake of caesium and strontium — the two radionuclides that dominate
 intermediate-level nuclear waste. It bundles an audited, provenance-tracked meta-analysis database
-(195 measurements across 22 published sources, split into separate adsorption and immobilisation
+(214 measurements across 24 published sources, split into separate adsorption and immobilisation
 pools), the analysis pipeline that produced our findings, and a graphical interface in which a user
 can enter a composition and receive a predicted distribution coefficient together with an explicit
 statement of how far that prediction can be trusted.

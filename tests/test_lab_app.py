@@ -65,3 +65,12 @@ def test_rerun_handler_reports_the_headline_numbers():
 def test_audit_summary_md_mentions_verified():
     md = L._audit_summary_md()
     assert "VERIFIED_TRUE" in md or "verified" in md.lower()
+
+
+def test_meta_handler_reports_k_and_the_rejection_register():
+    md = L._meta_handler()
+    assert "k = 4" in md
+    assert "0.0625" in md or "p = 0.06" in md
+    assert "REJECTED" in md.upper() or "not admitted" in md.lower()
+    # the falsifiability controls must be visible, not buried
+    assert "dye" in md.lower()

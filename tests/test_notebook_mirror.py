@@ -45,3 +45,13 @@ def test_headline_and_counts_match():
     assert len(LITE.load_pool("A")) == 141 and len(LITE.load_pool("B")) == 73
     assert len(LITE.load_findings()) == 46 and len(LITE.load_decisions()) == 17
     assert len(LITE.load_audit_summary()) == 91
+
+
+def test_meta_evidence_mirrors_the_desktop_engine():
+    """The notebook must show the SAME study-level evidence as the desktop app."""
+    r, l = REAL.meta_evidence(), LITE.meta_evidence()
+    assert l["k"] == r["k"]
+    assert l["n_supporting"] == r["n_supporting"]
+    assert l["r_bar"] == pytest.approx(r["r_bar"], rel=1e-9)
+    assert [s["label"] for s in l["studies"]] == [s["label"] for s in r["studies"]]
+    assert len(l["rejected"]) == len(r["rejected"])

@@ -328,3 +328,26 @@ def rerun_headline_numbers() -> dict:
         "framework_r": float(structural_precondition(False).value),
         "pooled_struct_r": float(structural_precondition(True).value),
     }
+
+
+def meta_evidence() -> dict:
+    """Study-level meta-analysis of the framework-Al claim (F44/F45/F46).
+
+    The forward model is quantified on one series (n=7, F43 proved that is the corpus
+    maximum). This is the complementary evidence: how many INDEPENDENT studies reproduce the
+    same direction. Power comes from k, not n. Returns the studies, the negative controls
+    that make the claim falsifiable, and the full register of candidates NOT admitted --
+    including the ones that would have supported it.
+    """
+    from geomind import meta as _M
+    studies = _M.collect_studies()
+    controls = _M.collect_negative_controls()
+    summary = _M.meta_analyse(studies)
+    return {
+        **summary,
+        "studies": [{"label": s.label, "n": s.n, "r": s.r, "descriptor": s.descriptor,
+                     "target": s.target, "note": s.note} for s in studies],
+        "controls": [{"label": c.label, "n": c.n, "r": c.r, "note": c.note} for c in controls],
+        "rejected": list(_M.REJECTED_CANDIDATES),
+        "criteria": dict(_M.INCLUSION_CRITERIA),
+    }

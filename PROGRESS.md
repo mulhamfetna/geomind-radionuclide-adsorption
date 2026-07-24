@@ -1,6 +1,38 @@
 # 📌 PROGRESS — pinned status
 
-**Updated:** 2026-07-20 · **Branch:** `dev` · **Pool A:** 141 rows / 14 sources · **Pool B:** 54 rows / 8 sources · **Tests:** 125 passing
+**Updated:** 2026-07-24 · **Branch:** `main` (public, AGPL-3.0 + CC BY 4.0) · **Pool A:** 141 rows / 14 sources · **Pool B:** 73 rows / 10 sources · **Findings:** 46 · **Tests:** 200 passing · **DOI:** [10.5281/zenodo.21510123](https://doi.org/10.5281/zenodo.21510123)
+
+
+> ## 📍 PINNED — DATA ACQUISITION IS CLOSED (2026-07-24)
+>
+> **Literature acquisition is formally closed.** This is a decision, not a pause, and it rests on
+> four independent findings:
+>
+> - **F36/D17** — acquisition reached negative returns: pooling across laboratories drives
+>   leave-one-out R² below zero, so more papers add heterogeneity, not signal.
+> - **F40** — batch-6 (5 papers) returned **zero** new rows while still adding mechanism.
+> - **F43** — the **n = 7 ceiling is structural**. Every route was tested and closed: the leached
+>   companion is a different regime (transfer R² = −0.988; merging *lowers* LOO-CV 0.811 → 0.684);
+>   n = 7 is the largest coherent group in all 141 Pool A rows; the Oulu ARI series is the wrong
+>   adsorbate with only 4 valid samples; and the GEOMIND 112-sample dataset contains **no**
+>   adsorption data at all.
+> - **F45/F46** — re-triaging the whole corpus against a deliberately broader profile admitted
+>   **zero** new studies, and the one targeted acquisition (Nadol 2026) measured base-element
+>   leaching, not radionuclides.
+>
+> **What this means going forward.** The evidence base is **k = 4 independent studies** (F44), not
+> a single n = 7 regression. Power now comes from *k*, and *k* rises only through a **new
+> independent composition series** — verified from the **full text** (not the title) to have
+> ≥ 3 distinct compositions and an exchangeable-cation target (F46).
+>
+> **Two routes remain open, neither blocking publication:**
+> 1. An opportunistic qualifying paper via institutional access (each one takes p from 0.0625 → 0.031 → 0.016).
+> 2. A laboratory campaign — fully specified in [`docs/lab-campaign-protocol.md`](docs/lab-campaign-protocol.md) —
+>    the *only* route to a quantitative model beyond n = 7. Currently not executable (no lab access).
+>
+> **The manuscript does not wait on either.** See
+> [`reports/data-only-strategy.md`](reports/data-only-strategy.md).
+
 
 > 📋 **Retrospective (plan vs achieved): [`reports/plan-vs-achieved.md`](reports/plan-vs-achieved.md)** — setup brief 7/7; M1/M2/M6 done, M3b re-scoped, M3a/M5 (generative core) blocked; the block became a publishable finding + manuscript.
 >

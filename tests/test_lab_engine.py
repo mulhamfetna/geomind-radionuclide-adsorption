@@ -184,3 +184,19 @@ def test_load_audit_summary_falls_back_to_committed_csv(tmp_path, monkeypatch):
     df = E.load_audit_summary()
     assert len(df) == 91
     assert "VERIFIED_TRUE" in set(df["veracity"])
+
+
+def test_meta_evidence_exposes_the_study_level_analysis():
+    m = E.meta_evidence()
+    assert m["k"] == 4
+    assert m["n_supporting"] == 4
+    assert m["r_bar"] > 0.5
+    assert len(m["studies"]) == 4
+    assert len(m["controls"]) == 3
+    assert len(m["rejected"]) >= 7          # the audit trail of what was NOT admitted
+
+
+def test_meta_evidence_rejections_are_two_directional():
+    """A reviewer must be able to see we did not only reject inconvenient results."""
+    dirs = {r["would_have"] for r in E.meta_evidence()["rejected"]}
+    assert "supports" in dirs and "opposes" in dirs

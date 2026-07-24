@@ -77,6 +77,9 @@ def build_bundle() -> dict:
         "findings": E.load_findings(),
         "decisions": E.load_decisions(),
         "figures": _figures(),
+        # Study-level meta-analysis (F44/F45/F46). Precomputed here because engine_lite
+        # has no access to the geomind package; the mirror test asserts it matches.
+        "meta": E.meta_evidence(),
     }
 
 

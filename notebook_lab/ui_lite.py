@@ -222,6 +222,9 @@ def build_app():
             gr.Markdown(_audit_summary_md())
             gr.DataFrame(value=E.load_audit_summary(), wrap=True)
 
+        with gr.Tab("Evidence · Study-level meta-analysis"):
+            gr.Markdown(_meta_handler())
+
         with gr.Tab("Console · Re-run analyses"):
             gr.Markdown("Recompute the paper's headline numbers live from the bundle.")
             rerun_btn = gr.Button("Re-run", variant="primary")
@@ -229,6 +232,43 @@ def build_app():
             rerun_btn.click(_rerun_handler, None, rerun_out)
 
     return demo
+
+
+def _meta_handler() -> str:
+    """Study-level meta-analysis: how many INDEPENDENT studies reproduce the direction."""
+    m = E.meta_evidence()
+    L = ["### Study-level evidence — the unit of analysis is the *study*, not the sample", "",
+         "The forward model is quantified on one series (n = 7; F43 proved that is the corpus "
+         "maximum). This asks the complementary question: **how many independent studies "
+         "reproduce the same direction?** Power comes from *k*, not *n*.", "",
+         "| study | n | r | verdict |", "|---|---:|---:|---|"]
+    for s in m["studies"]:
+        L.append(f"| {s['label']} | {s['n']} | {s['r']:+.3f} | "
+                 f"{'supports' if s['r'] > 0 else '**OPPOSES**'} |")
+    L += ["",
+          f"**k = {m['k']} independent studies · {m['n_supporting']} supporting, "
+          f"{m['n_opposing']} opposing · weighted mean r̄ = {m['r_bar']:+.3f} · "
+          f"{m['samples_represented']} samples · exact sign test p = {m['sign_test_p']:.4f}**", "",
+          "### Negative controls — these make the claim falsifiable", "",
+          "| control | n | r | reading |", "|---|---:|---:|---|"]
+    for c in m["controls"]:
+        L.append(f"| {c['label']} | {c['n']} | {c['r']:+.3f} | {c['note']} |")
+    L += ["",
+          "### Candidates considered and NOT admitted", "",
+          "Inclusion criteria were fixed *before* the screen was run. Rejection is by criterion, "
+          "never by direction — several of these would have **supported** the claim.", "",
+          "| candidate | n | r (signed) | would have | rejected on |", "|---|---:|---:|---|---|"]
+    for x in m["rejected"]:
+        L.append(f"| {x['label']} | {x['n']} | {x['r_signed']:+.3f} | {x['would_have']} | "
+                 f"`{x['criterion']}` |")
+    sup = sum(1 for x in m["rejected"] if x["would_have"] == "supports")
+    L += ["", f"*{sup} of {len(m['rejected'])} rejected candidates would have supported the claim.*",
+          "", "**Honest limits:** k = 4 is small (p = 0.0625 is suggestive, not conclusive); two of "
+          "the four studies come from the same paper, so a conservative count is k = 3 (p = 0.125); "
+          "effect sizes are heterogeneous, which is why a random-effects framing is used; and a "
+          "meta-analysis of *directions* does not license quantitative prediction — the forward "
+          "model keeps its domain guard."]
+    return "\n".join(L)
 
 
 def _concept_cards() -> str:

@@ -3,7 +3,7 @@
 [![Code: AGPL v3](https://img.shields.io/badge/code-AGPL--3.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
 [![DOI](https://zenodo.org/badge/1309918660.svg)](https://zenodo.org/badge/latestdoi/1309918660)
-[![Tests](https://img.shields.io/badge/tests-181%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-202%20passing-brightgreen.svg)](tests/)
 
 An **audited, provenance-tracked meta-analysis database** of caesium and strontium uptake and
 immobilisation in geopolymers and alkali-activated materials — with the analysis pipeline, a
@@ -40,6 +40,14 @@ Engineering, University of Aleppo — [ORCID 0000-0003-1828-1376](https://orcid.
 5. **Reusable screening methods.** A Langmuir **saturation screen** (θ = 1 − R_L) that flags
    reported capacities which are extrapolation artefacts, and a **two-pool audit framework** that
    keeps adsorption and immobilisation data separate.
+
+6. **The direction reproduces across independent studies.** Because raw values cannot be pooled
+   (result 3), the evidence is assembled at *study* level: **k = 4 independent studies** — different
+   laboratories, adsorbates (Sr, Cs, NH₄⁺), material classes and regimes — **all** run in the
+   predicted direction (weighted mean r̄ = +0.77, exact sign test p = 0.0625). Three negative
+   controls make the claim falsifiable: surface area does not predict (r = +0.19), the descriptor
+   dies in Ca-bearing gels (r = −0.01), and it runs *backwards* for a dye (r = −0.98) — it tracks
+   **cation exchange**, not adsorption in general.
 
 > 🧪 **Try it:** the [Virtual Lab](#virtual-lab) — a local app or a one-file Colab notebook — lets
 > you explore compositions and see every prediction with its confidence flag and its reasoning.
@@ -102,7 +110,15 @@ study*: can the GEOMIND architecture be usefully applied to a different alkali-a
 system? That is a legitimate and interesting question; "we reproduced the paper on our own data"
 would not have been an honest description of it.
 
-A faithful validation requires the authors' confidential 112-sample dataset (requested).
+A faithful validation requires the authors' confidential 112-sample dataset (requested). **Note:**
+that dataset would unblock the *replication* milestone but contains **no adsorption data**, so it
+would not enlarge the n = 7 forward-model series — see [`reports/n7-ceiling-analysis.md`](reports/n7-ceiling-analysis.md).
+
+> **📍 Data acquisition is closed (2026-07-24).** Literature acquisition reached negative returns
+> (F36/D17), the n = 7 ceiling was proven structural (F43), and a re-triage of the whole corpus
+> against a deliberately broader profile admitted zero new studies (F45/F46). The evidence base is
+> now **k = 4 independent studies**, and *k* rises only through a genuinely new composition series.
+> See [`reports/data-only-strategy.md`](reports/data-only-strategy.md) and `PROGRESS.md`.
 
 ---
 
@@ -111,7 +127,7 @@ A faithful validation requires the authors' confidential 112-sample dataset (req
 ```
 papers/
   main/          GEOMIND paper + supplementary      (PDFs not committed)
-  references/    16 supporting publications          (PDFs not committed)
+  references/    51 supporting publications          (PDFs not committed)
   MANIFEST.md    checksummed index of the corpus     ← committed
 data/
   raw/           compiled research database          ← committed
@@ -121,7 +137,7 @@ data/
   interim/       cleaning intermediates              (regenerable)
 docs/
   paper-analysis/  reproduction specification of GEOMIND
-src/geomind/     implementation
+src/geomind/     implementation (incl. meta.py, source_data.py, manifest.py)
 app/             Virtual Lab — local Gradio app + tested engine service layer
 notebook_lab/    self-contained notebook mirror (exporter + engine_lite + builder)
 notebooks/       exploration + geomind_virtual_lab.ipynb (shareable Colab lab)

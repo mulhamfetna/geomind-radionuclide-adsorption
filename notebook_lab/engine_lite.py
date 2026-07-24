@@ -257,6 +257,16 @@ def load_audit_summary(db_path=None):
     return pd.DataFrame(_bundle()["audit"], columns=cols)
 
 
+def meta_evidence() -> dict:
+    """Study-level meta-analysis (F44/F45/F46), precomputed into the bundle.
+
+    Power comes from k (independent studies), not n (rows) - see F43 for why n cannot
+    grow. Carries the studies, the falsifiability controls, and the full register of
+    candidates NOT admitted, including those that would have supported the claim.
+    """
+    return _bundle()["meta"]
+
+
 def rerun_headline_numbers() -> dict:
     f = _fwd()
     pooled = pooled_loo_r2(pooling_sources())
