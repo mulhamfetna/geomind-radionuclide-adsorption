@@ -305,6 +305,8 @@ sources:
      note: "Batch-6. RWTH Aachen dissertation (FZ Juelich IEK-6, Energie & Umwelt 544, ISBN 978-3-95806-559-8), defended 2020-09-04. Synthesis + structural characterisation (XRD/PDF/Raman/IR/MAS-NMR) of Cs/Sr geopolymers. No adsorption or leaching chapter."}
   - {id: vandevenne2018, doi: "10.1016/j.jnucmat.2018.08.045", status: verified, rows: 14,
      note: "Batch-7, closes Q12. SIX DESIGNED Ca-Si-Al slag compositions (+1 replicate) from analytical reagents, one protocol (2 M NaOH, L/S 0.30, 1 wt%, 28 d / 90 C tank test). Cs+Sr % released, Table 2. The composition-varying single-protocol design the literature rarely provides -> F41."}
+  - {id: nadol2026, doi: "10.1007/s12034-025-03487-2", status: verified, rows: 0,
+     note: "Batch-8. Bull. Mater. Sci. 49:54 (CSIR-NCL/NML + BARC). ONE fly-ash/slag geopolymer (NML-1) in two states (as-made, 30 d water). Leach index 11-13 is for BASE elements Na/Ca/Al/Si, NOT Cs/Sr - Cs/Sr appear only as intro citations to Lichvar. Rich 29Si/27Al/23Na NMR but 28% of the 29Si intensity is UNASSIGNED, so ARI is indeterminate under D16. Rejected for the meta-analysis -> F46."}
   - {id: jain2022, doi: "10.1016/j.cemconcomp.2022.104679", status: verified, rows: 5,
      note: "Batch-7. Fly-ash geopolymer, 5 M NaOH, 90 C/7 d; Cs 2-20 wt% loading series with LX (ANSI/ANS-16.1) and BET, Table 3 (corroborated in the Conclusions). LX RISES with loading via in-situ pollucite -> F42."}
   - {id: muracchioli2019, doi: null, status: rejected, rows: 0,
@@ -1263,6 +1265,35 @@ findings:
       class-transferable descriptors. The inclusion criteria and the full rejection register with reasons
       now live in src/geomind/meta.py so the screen is reproducible and auditable rather than a
       judgement recorded in prose.'
+    status: resolved
+
+  - id: F46
+    severity: medium
+    title: The targeted acquisition (Bull. Mater. Sci. 49:54) does NOT raise k - its leach indices are for
+      BASE MATRIX ELEMENTS, not radionuclides, and its deconvolution leaves 28% of intensity unassigned
+    evidence: 'Nadol, Ajithkumar, Singla, Alex, Kumar, Bhatt, Deo, Sen, Ambashta, Bajpai, Shivakumar &
+      Manohar, Bull. Mater. Sci. (2026) 49:54, doi:10.1007/s12034-025-03487-2 (CSIR-NCL Pune, CSIR-NML
+      Jamshedpur, BARC Mumbai). Acquired 2026-07-24 as the named candidate from the F44 strategy and read
+      inline. Three disqualifications, each checked against the primary text: (1) ONE formulation, not a
+      composition series - NML-1 (as-made) and NML-1L (30 d in water), i.e. one material in two STATES,
+      which F43 established is a different regime rather than an independent series. (2) The headline
+      leach index of 11-13 is for the BASE MATRIX ELEMENTS Na, Ca, Al and Si - the geopolymer dissolving
+      into its own constituents - not for Cs or Sr. Cs and Sr occur exactly four times in the paper, all
+      in the Introduction citing Lichvar et al. (3) The 29Si deconvolution (Table 3) fits EIGHT peaks for
+      NML-1 but the text assigns only five (Q4(4Al) -88.10, Q4(3Al) -92.69, Q4(2Al) -98.40, Q4(1Al)
+      -104.40, Q4(0Al) -108.75); the peaks at -84.01, -113.02 and -127.49 carry 28.08% of the intensity
+      with no stated m-assignment, so ARI is indeterminate exactly as in F23.'
+    action: 'Registered with rows=0 and added to the meta-analysis rejection register under
+      distinct_specimens and cation_target; ARI must NOT be computed (D16). k remains 4 and the sign-test
+      p remains 0.0625. HONEST NOTE ON MY OWN RECOMMENDATION: this paper was proposed for acquisition on
+      the strength of its title and abstract snippet ("leachability and solid-state NMR"), which are true
+      but describe base-element leaching. Screening a candidate on title-level metadata is not sufficient
+      - the target species must be confirmed in the primary text before an acquisition is recommended.
+      Future candidate screening must verify (a) >=3 distinct compositions and (b) an exchangeable-cation
+      target, both from the full text, before the paper is requested. The paper retains value as CONTEXT:
+      its 27Al data show tetrahedral Al increasing on alkali activation, and it reports no labile sodium
+      available for exchange as in zeolites - both consistent with the framework-Al picture, neither
+      quantifiable into a pool row.'
     status: resolved
 
 # =====================================================================

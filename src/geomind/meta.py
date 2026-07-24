@@ -95,6 +95,13 @@ REJECTED_CANDIDATES: list[dict] = [
      "r_signed": +0.190, "n": 16,
      "reason": "A hand-compiled multi-laboratory table, which is exactly the pooling F36 shows "
                "does not hold together."},
+    {"label": "Nadol 2026 (base elements)", "criterion": "cation_target", "would_have": "n/a",
+     "r_signed": 0.0, "n": 1,
+     "reason": "Bull. Mater. Sci. 49:54. ONE formulation in two states (as-made, water-interacted), "
+               "and its leach index of 11-13 is for the BASE MATRIX ELEMENTS Na/Ca/Al/Si, not for an "
+               "exchangeable radionuclide cation. Cs and Sr appear only as Introduction citations. Its "
+               "29Si deconvolution also leaves 28% of intensity unassigned, so ARI is indeterminate "
+               "(D16/F23). Acquired specifically to raise k; it does not. See F46."},
     {"label": "Oulu 2026, all 13 NH4+", "criterion": "single_class", "would_have": "supports",
      "r_signed": +0.550, "n": 13,
      "reason": "Mixes Ca-free and Ca-bearing gels. F19: the descriptor is dead in the Ca-bearing "
