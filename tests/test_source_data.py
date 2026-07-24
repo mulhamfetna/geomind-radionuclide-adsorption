@@ -51,3 +51,20 @@ def test_complete_database_export_includes_the_excluded_rows():
     assert len(s["04 Audit trail"]) == 91
     assert len(s["05 Findings"]) == 46
     assert len(s["12 Meta not admitted"]) >= 7
+
+
+def test_dataset_deposit_bundle_is_complete_and_self_describing():
+    from geomind import dataset_deposit as DD
+    DD.build()
+    d = DD.OUT_DIR
+    for f in ["GEOMIND-R-complete-database.xlsx", "GEOMIND-R-source-data.xlsx",
+              "pool_a_adsorption.csv", "pool_b_immobilisation.csv",
+              "DATA-DICTIONARY.md", "README.md", "CITATION.cff", "LICENSE"]:
+        assert (d / f).exists(), f"missing {f}"
+    import pandas as pd
+    assert len(pd.read_csv(d / "pool_a_adsorption.csv")) == 141
+    assert len(pd.read_csv(d / "pool_b_immobilisation.csv")) == 73
+    dd = (d / "DATA-DICTIONARY.md").read_text()
+    assert "al_iv_mmol_g" in dd and "ca_si_al" in dd      # the key descriptors documented
+    assert "CC BY 4.0" in (d / "README.md").read_text()
+    assert "type: dataset" in (d / "CITATION.cff").read_text()
