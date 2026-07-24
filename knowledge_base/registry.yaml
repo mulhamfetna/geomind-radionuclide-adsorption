@@ -1235,6 +1235,36 @@ findings:
       DIRECTIONS does not license quantitative prediction - the forward model keeps its domain guard.'
     status: resolved
 
+  - id: F45
+    severity: high
+    title: Re-triage of the whole corpus against the broader profile admits ZERO new studies - and the
+      reason is that Si/Al is not a reliable cross-class proxy for framework aluminium
+    evidence: 'Following F44, every series in both pools with >=3 compositions, a varying Al proxy and a
+      cation target was re-screened against inclusion criteria FIXED BEFORE the screen was run. Seven
+      candidates were found and ALL SEVEN were rejected, each on a stated principle: Tarnovsky 2024 Cs and
+      Sr (single_class - the 3-point series is 1 kaolin CLAY plus 2 geopolymers); Katada 2024
+      (valid_descriptor - Na-zeolites whose target is a selectivity-limited IEC under 1000 mg/L Na, where
+      high-silica zeolites are Cs-selective through hydration energy, a different mechanism); Baek 2018
+      (clean_target - the correlation is carried by chabazite q_max 1249.5 mg/g, which our OWN saturation
+      screen flags as an artefact, F14); Varon leached (distinct_specimens - same 7 specimens, and F43
+      showed the leached state is a different regime); literature_compilation (single_protocol - a
+      multi-laboratory table, exactly the pooling F36 rejects); Oulu all-13 (single_class - mixes Ca-free
+      and Ca-bearing, concealing that the descriptor is dead at r=-0.01 in the Ca-bearing subset, F19).
+      CRITICALLY, 4 of the 7 rejected candidates would have SUPPORTED the claim (r_signed +0.19 to +0.99)
+      and 3 would have opposed it - rejection is demonstrably not direction-dependent, and a test asserts
+      that both directions appear among the rejects.'
+    action: 'Two results. (1) The broader profile of F44 does NOT cheaply raise k from the existing
+      corpus - k stays at 4 and new independent series must be acquired, not recovered. (2) The mechanism
+      of the failure is itself a finding: Si/Al INVERTS as an Al proxy between structural classes (Katada
+      Na-zeolites give MORE Cs capacity at HIGHER Si/Al, opposite to framework gels), which is F36 sign
+      flip restated and now demonstrated a second time. Encoded as si_al_admissible(): Si/Al counts as an
+      inverse framework-Al proxy ONLY inside one designed single-class series (Vandevenne), never across
+      classes and never for zeolites. Direct measures (AlIV, ARI, Q4(mAl)) remain the only
+      class-transferable descriptors. The inclusion criteria and the full rejection register with reasons
+      now live in src/geomind/meta.py so the screen is reproducible and auditable rather than a
+      judgement recorded in prose.'
+    status: resolved
+
 # =====================================================================
 # DECISIONS
 # =====================================================================

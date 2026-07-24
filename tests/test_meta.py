@@ -52,3 +52,33 @@ def test_power_projection_is_honest_about_k():
     assert M.sign_test_p(5) == pytest.approx(0.03125)
     assert M.sign_test_p(6) == pytest.approx(0.015625)
     assert M.sign_test_p(8) < 0.005
+
+
+# ---------------------------------------------------------------------------
+# Re-triage of the existing corpus against the broader profile (2026-07-24)
+# ---------------------------------------------------------------------------
+def test_every_rejected_candidate_carries_a_principled_reason():
+    """The re-triage found NO new qualifying study. Each rejection must be on a
+    stated principle, not on the direction of its result - otherwise the
+    inclusion criteria are just cherry-picking."""
+    rej = M.REJECTED_CANDIDATES
+    assert len(rej) >= 5
+    for c in rej:
+        assert c["reason"], f"{c['label']} has no stated reason"
+        assert c["criterion"] in M.INCLUSION_CRITERIA, f"{c['label']}: unknown criterion"
+
+
+def test_rejections_are_not_direction_dependent():
+    """Both a SUPPORTING and an OPPOSING candidate must appear among the rejects.
+    If we only ever rejected inconvenient results, the meta-analysis would be
+    worthless."""
+    dirs = {c["would_have"] for c in M.REJECTED_CANDIDATES}
+    assert "supports" in dirs and "opposes" in dirs
+
+
+def test_si_al_is_not_accepted_as_a_cross_class_proxy():
+    """The re-triage established that Si/Al inverts between structural classes
+    (F36), so it is admissible only inside one designed single-class series."""
+    assert M.si_al_admissible(structural_class="zeolite", designed_series=False) is False
+    assert M.si_al_admissible(structural_class="mixed", designed_series=True) is False
+    assert M.si_al_admissible(structural_class="ca_si_al_slag", designed_series=True) is True

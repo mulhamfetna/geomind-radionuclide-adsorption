@@ -33,6 +33,76 @@ from dataclasses import dataclass
 import numpy as np
 
 
+#: The rules a series must satisfy to enter the meta-analysis. Fixed BEFORE the 2026-07-24
+#: re-triage was run, so that inclusion cannot be decided by whether a result is convenient.
+INCLUSION_CRITERIA: dict[str, str] = {
+    "single_protocol": "One laboratory and one protocol. Multi-laboratory compilations are "
+                       "excluded - F36 showed pooling across laboratories destroys the "
+                       "relationship, so a compilation is not a series.",
+    "single_class": "One structural class. F19/D12: the descriptor is defined only within a "
+                    "class, and Si/Al inverts between classes.",
+    "cation_target": "The adsorbate must be an exchangeable cation. Dyes and other "
+                     "non-exchanged species are negative controls, not evidence.",
+    "valid_descriptor": "A DIRECT framework-Al measure (Al^IV, ARI, Q4(mAl)); or Si/Al only "
+                        "inside one designed single-class series - see si_al_admissible().",
+    "clean_target": "No target value that our own screens reject (e.g. a capacity failing the "
+                    "F14-F17 saturation screen).",
+    "distinct_specimens": "A series of distinct materials, not one specimen re-measured in "
+                          "another state - F43 showed a state change is a different regime.",
+}
+
+
+def si_al_admissible(structural_class: str, designed_series: bool) -> bool:
+    """Is Si/Al usable as an inverse framework-Al proxy for this series?
+
+    Only inside ONE designed single-class series. The 2026-07-24 re-triage showed why:
+    across classes the proxy inverts (Katada's Na-zeolites give MORE Cs capacity at HIGHER
+    Si/Al, the opposite of the framework-gel behaviour), which is F36's sign-flip finding
+    restated. A 'mixed' class never qualifies.
+    """
+    if not designed_series:
+        return False
+    return structural_class not in {"mixed", "zeolite", "unknown", ""}
+
+
+#: Every series considered by the re-triage and NOT admitted, with the criterion it failed and
+#: the direction it WOULD have contributed. Both supporting and opposing candidates appear -
+#: if only inconvenient results were ever rejected, the meta-analysis would be worthless.
+REJECTED_CANDIDATES: list[dict] = [
+    {"label": "Tarnovsky 2024 (Cs)", "criterion": "single_class", "would_have": "opposes",
+     "r_signed": -0.992, "n": 3,
+     "reason": "The 3-point 'series' is 1 kaolin CLAY plus 2 geopolymers - a precursor and its "
+               "products are not one structural class."},
+    {"label": "Tarnovsky 2024 (Sr)", "criterion": "single_class", "would_have": "opposes",
+     "r_signed": -0.828, "n": 3,
+     "reason": "Same mixed clay/geopolymer series as the Cs rows."},
+    {"label": "Katada 2024 (Cs)", "criterion": "valid_descriptor", "would_have": "opposes",
+     "r_signed": -0.679, "n": 6,
+     "reason": "Na-zeolites, Si/Al 1.1-12.3, and the target is a selectivity-limited IEC under a "
+               "1000 mg/L Na background. High-silica zeolites are Cs-selective through hydration "
+               "energy, a different mechanism from exchange-site density; Si/Al is not an "
+               "admissible Al proxy here (see si_al_admissible)."},
+    {"label": "Baek 2018 (Cs)", "criterion": "clean_target", "would_have": "supports",
+     "r_signed": +0.986, "n": 3,
+     "reason": "The correlation is carried almost entirely by chabazite q_max = 1249.5 mg/g, "
+               "which OUR OWN saturation screen flags as an extrapolation artefact (F14). We "
+               "cannot reject that value in the audit and then rely on it here."},
+    {"label": "Varon leached 2026 (Sr)", "criterion": "distinct_specimens", "would_have": "supports",
+     "r_signed": +0.262, "n": 7,
+     "reason": "The same seven specimens as Varon 2025 after leaching - not an independent "
+               "series, and F43 showed the leached state is a different regime."},
+    {"label": "literature_compilation (Cs)", "criterion": "single_protocol", "would_have": "supports",
+     "r_signed": +0.190, "n": 16,
+     "reason": "A hand-compiled multi-laboratory table, which is exactly the pooling F36 shows "
+               "does not hold together."},
+    {"label": "Oulu 2026, all 13 NH4+", "criterion": "single_class", "would_have": "supports",
+     "r_signed": +0.550, "n": 13,
+     "reason": "Mixes Ca-free and Ca-bearing gels. F19: the descriptor is dead in the Ca-bearing "
+               "subset (r = -0.01), and the pooled +0.55 conceals that. Only the Ca-free n=4 "
+               "subset is admitted."},
+]
+
+
 @dataclass(frozen=True)
 class Study:
     """One independent internal series: a single laboratory, protocol and material class."""
@@ -191,6 +261,14 @@ def report() -> str:
           "", "NEGATIVE CONTROLS (must NOT show the pattern)"]
     for c in nc:
         L.append(f"{c.label:38s} {c.n:3d} {c.r:+8.3f}  {c.note}")
+    L += ["", "REJECTED CANDIDATES (re-triage 2026-07-24) - criterion, not direction, decides"]
+    L.append(f"{'candidate':30s} {'n':>3s} {'r(signed)':>10s} {'would have':>11s}  criterion")
+    for c in REJECTED_CANDIDATES:
+        L.append(f"{c['label']:30s} {c['n']:3d} {c['r_signed']:+10.3f} {c['would_have']:>11s}  "
+                 f"{c['criterion']}")
+    sup = sum(1 for c in REJECTED_CANDIDATES if c["would_have"] == "supports")
+    L.append(f"  ({sup} of {len(REJECTED_CANDIDATES)} rejected would have SUPPORTED the claim - "
+             "rejection is not direction-dependent)")
     return "\n".join(L)
 
 

@@ -127,10 +127,37 @@ State these in the paper; they are real.
 
 ---
 
+## 5b. Re-triage result (run 2026-07-24) — **zero new studies admitted**
+
+The cheapest action was run first, against criteria **fixed before the screen**. Seven candidate
+series were found in the corpus. **All seven were rejected**, each on a stated principle:
+
+| candidate | n | r (signed) | would have | rejected on |
+|---|---|---|---|---|
+| Tarnovsky 2024 (Cs) | 3 | −0.992 | opposes | `single_class` — 1 kaolin **clay** + 2 geopolymers |
+| Tarnovsky 2024 (Sr) | 3 | −0.828 | opposes | `single_class` — same mixed series |
+| Katada 2024 (Cs) | 6 | −0.679 | opposes | `valid_descriptor` — Na-zeolites; selectivity-limited IEC |
+| Baek 2018 (Cs) | 3 | **+0.986** | **supports** | `clean_target` — driven by the chabazite artefact **we ourselves flagged** (F14) |
+| Varon leached (Sr) | 7 | +0.262 | supports | `distinct_specimens` — same 7 specimens, different regime (F43) |
+| literature_compilation | 16 | +0.190 | supports | `single_protocol` — multi-laboratory table (F36) |
+| Oulu, all 13 NH₄⁺ | 13 | +0.550 | supports | `single_class` — conceals that the Ca-bearing subset is dead (r = −0.01, F19) |
+
+**4 of the 7 rejected would have *supported* the claim.** Rejection is demonstrably not
+direction-dependent, and a test asserts that both directions appear among the rejects.
+
+**Why they failed, mechanistically:** Si/Al **inverts** as an Al proxy between structural classes —
+Katada's Na-zeolites give *more* Cs capacity at *higher* Si/Al, the opposite of framework gels. That
+is F36's sign flip, demonstrated a second time. Encoded as `si_al_admissible()`: Si/Al is an
+admissible inverse Al proxy **only inside one designed single-class series**, never across classes
+and never for zeolites. Only the direct measures (Al^IV, ARI, Q⁴(mAl)) transfer between classes.
+
+**Consequence:** k stays at 4. New independent series must be **acquired**, not recovered.
+
+---
+
 ## 6. Recommended sequence
 
-1. **Re-triage the existing corpus** against the broader profile in §4. No acquisition needed;
-   may add k immediately. ← *cheapest, do first*
+1. ~~Re-triage the existing corpus~~ — **done 2026-07-24; admitted zero new studies (§5b).**
 2. **Targeted acquisition of 2–4 qualifying studies** via institutional access, prioritising
    composition series in the NMR-rich immobilisation literature (F20: 4 of 6 NMR papers are
    immobilisation studies). Named candidate: DOI 10.1007/s12034-025-03487-2.
