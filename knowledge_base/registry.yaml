@@ -1204,6 +1204,37 @@ findings:
       in one protocol across the published corpus - state it that way, not as a gap left unfilled.'
     status: resolved
 
+  - id: F44
+    severity: high
+    title: With no laboratory, the way past n=7 is to change the UNIT OF ANALYSIS from the sample to the
+      study - k=4 independent studies reproduce the direction, and the negative controls hold
+    evidence: 'Constraint: no lab access, 100% literature-based. Every data-only route to a larger n was
+      tested and closed (see reports/data-only-strategy.md): the Oulu raw dataset is closed by F18 (its
+      deconvolution is published and our re-fit was correctly rejected) and F19 (only 4 of 12 samples are
+      Ca-free); the F20 route-(b) reframe to leach resistance ALSO caps at n=7 (in Pool B, ARI+retention
+      is n=4 and the largest coherent source x nuclide x retention-type group is n=7); and adding Ca as a
+      covariate to rescue the Oulu 13 - suggested by F41, where Ca/(Si+Al) predicted Sr retention at
+      r=+0.99 - FAILS (LOO-CV R2: ARI alone -0.041, Ca alone -0.397, ARI+Ca -0.122, with interaction
+      -0.678). What DOES work is meta-analysis at study level, implemented as src/geomind/meta.py: k=4
+      independent series all run in the predicted direction (Varon AlIV->Sr K_D r=+0.946; Oulu Ca-free
+      ARI->NH4+ r=+0.932; Vandevenne Si/Al->Cs retention r=+0.617 and ->Sr retention r=+0.376), Fisher-z
+      weighted r_bar=+0.771 over 25 samples, exact sign test p=0.0625. Negative controls behave: BET
+      +0.189, ARI in Ca-bearing gels -0.012, and ARI vs a DYE -0.984 (a dye is not exchanged at Al sites -
+      the strongest specificity evidence in the project).'
+    action: 'Inverts the acquisition goal. Power now comes from k (independent studies), which the
+      literature CAN supply, not from n (rows), which F43 proved it cannot. A paper qualifies if it has an
+      internal composition series (>=3 compositions, one protocol), ANY framework-Al proxy (AlIV, ARI,
+      Q4(mAl), or Si/Al within a fixed class) and ANY cation uptake/retention measure - a far broader
+      profile than "AlIV and Cs/Sr", which F20 showed is near-nonexistent. Each additional study HALVES
+      the sign-test p: k=5 gives 0.031, k=6 gives 0.016, k=8 gives 0.004, so one or two more qualifying
+      studies moves the result from suggestive to significant. CHEAPEST NEXT ACTION: re-triage the
+      existing corpus against the broader profile - no acquisition required. LIMITS TO STATE: k=4 is
+      small; two of the four are the same paper, so the conservative count is k=3 papers (p=0.125) and
+      both should be reported; effect sizes are heterogeneous (+0.38 to +0.95), which is why a
+      random-effects framing is right and a pooled fixed-effect fit is not; and a meta-analysis of
+      DIRECTIONS does not license quantitative prediction - the forward model keeps its domain guard.'
+    status: resolved
+
 # =====================================================================
 # DECISIONS
 # =====================================================================
