@@ -6,6 +6,8 @@ concept DOI [10.5281/zenodo.21510123](https://doi.org/10.5281/zenodo.21510123).
 
 ## [1.2.0] — 2026-07-24
 
+**DOI:** [10.5281/zenodo.21536768](https://doi.org/10.5281/zenodo.21536768)
+
 **Data acquisition closed.** The release that pins the evidence base ahead of journal submission.
 
 ### Added

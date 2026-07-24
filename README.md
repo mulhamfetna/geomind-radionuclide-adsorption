@@ -296,7 +296,7 @@ in [`CITATION.cff`](CITATION.cff) — GitHub renders a **"Cite this repository"*
 
 - **Concept DOI — cite this one** (always resolves to the latest version):
   [`10.5281/zenodo.21510123`](https://doi.org/10.5281/zenodo.21510123)
-- **This version (1.1.0):** [`10.5281/zenodo.21511375`](https://doi.org/10.5281/zenodo.21511375)
+- **This version (1.2.0):** [`10.5281/zenodo.21536768`](https://doi.org/10.5281/zenodo.21536768)
 
 **BibTeX**
 
@@ -306,7 +306,7 @@ in [`CITATION.cff`](CITATION.cff) — GitHub renders a **"Cite this repository"*
   title   = {{GEOMIND-R: An Audited Database, Structural Descriptor and
              Forward Model for Radionuclide Uptake in Geopolymers}},
   year    = {2026},
-  version = {1.1.0},
+  version = {1.2.0},
   doi     = {10.5281/zenodo.21510123},
   url     = {https://doi.org/10.5281/zenodo.21510123}
 }
