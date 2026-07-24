@@ -52,7 +52,7 @@ def test_pool_handler_returns_the_full_pool():
 def test_findings_table_filters_by_query():
     all_rows = L._findings_table("")
     f36 = L._findings_table("F36")
-    assert len(all_rows) == 42
+    assert len(all_rows) == 43
     assert 1 <= len(f36) < len(all_rows)
 
 

@@ -1173,6 +1173,37 @@ findings:
       (schema trap 2): a model that mistook it for a target would learn a spurious "more waste is better".'
     status: resolved
 
+  - id: F43
+    severity: high
+    title: The n=7 ceiling is structural, not an oversight - every route to a larger training set in the
+      existing corpus is closed, and the descriptor does not survive a change of PREPARATION STATE
+    evidence: 'Exhaustive inline analysis, 2026-07-24 (reports/n7-ceiling-analysis.md). (1) The obvious
+      candidate - varon_leached2026, 7 more (AlIV, K_D) pairs from the SAME lab, protocol and class -
+      fails: the fresh model transfers to the leached samples with R2 = -0.988, the leached set is
+      internally flat (slope 580 vs 2812, in-sample R2 = 0.07), and merging DROPS predictive power from
+      LOO-CV R2 = +0.811 (n=7) to +0.684 under grouped leave-one-SPECIMEN-out CV (the 14 rows are 7
+      specimens x 2 states, so naive row-wise LOO leaks the paired twin). (2) n=7 is the LARGEST
+      single-source x single-adsorbate x single-target group in all 141 Pool A rows; al_iv_mmol_g exists
+      in only the two Varon sources across ~40 papers. (3) The only larger descriptor series (Oulu, n=13
+      ARI+capacity) is the wrong adsorbate (NH4+/dyes) and its descriptor-valid Ca-free subset is n=4;
+      using all 13 collapses it (LOO-CV R2 = -0.041 vs +0.556 on the 4). (4) The GEOMIND 112-sample
+      dataset contains NO adsorption/Cs/Sr measurement - its four targets are viscosity, mixture density,
+      material density, compressive strength.'
+    action: 'Two corrections and one instruction. CORRECTION A: our retrospective lists the GEOMIND
+      dataset and an own-lab campaign as interchangeable routes to unblock the generative work. For the
+      ADSORPTION model they are not - GEOMIND unblocks M3a (replication) but adds zero rows to n; only
+      new laboratory data raises n. Stop describing them as one blocker. CORRECTION B: F27 established
+      that removing AlIV from a specimen lowers its K_D (delta-vs-delta, r=+0.94); this finding adds the
+      complementary limit - the ABSOLUTE K_D of a leached specimen is not predicted by its residual AlIV.
+      The descriptor is valid within a PREPARATION STATE, not across states; this is F36 reappearing one
+      level below the laboratory. INSTRUCTION: the minimum viable campaign is 12-20 Ca-free metakaolin
+      geopolymers spanning Si/Al 1.0-2.5 under ONE activator/cure/uptake protocol, with 29Si+27Al MAS NMR
+      (-> ARI, AlIV) and Sr batch K_D on every sample, screened with our own theta >= 0.8 saturation
+      test. Even 6-8 samples in a second laboratory would convert "holds in one lab" into "reproduces".
+      For the paper: n=7 is the COMPLETE intersection of framework-Al-measured with Cs/Sr-uptake-measured
+      in one protocol across the published corpus - state it that way, not as a gap left unfilled.'
+    status: resolved
+
 # =====================================================================
 # DECISIONS
 # =====================================================================
