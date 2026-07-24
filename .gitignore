@@ -88,3 +88,8 @@ manuscript/GEOMIND-R-bibliography.*
 
 # Build artefact — regenerate with `python manuscript/export_figures.py`
 manuscript/GEOMIND-R-figures-submission.zip
+
+# Verbatim publisher abstracts (English), verified from the source PDFs. Publisher
+# copyright — a working source file for the authors' bibliography, not redistributed.
+# Regenerate locally from Crossref + the corpus PDFs.
+manuscript/bibliography_sources.json
