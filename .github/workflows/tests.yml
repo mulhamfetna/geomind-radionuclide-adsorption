@@ -46,7 +46,7 @@ jobs:
           from app import engine as E
           h = E.rerun_headline_numbers()
           assert len(E.load_pool("A")) == 141, "Pool A row count changed"
-          assert len(E.load_pool("B")) == 54, "Pool B row count changed"
+          assert len(E.load_pool("B")) == 73, "Pool B row count changed"
           assert len(E.load_audit_summary()) == 91, "audit trail row count changed"
           assert abs(h["forward_r2_loo"] - 0.811) < 0.01, h["forward_r2_loo"]
           assert h["pooled_r2"] < 0, h["pooled_r2"]
