@@ -303,6 +303,10 @@ sources:
      note: "Batch-6. MRS Symp. Proc. 824, CC8.35 (ANSTO). TEM/EDS + MAS NMR + IR. Explicitly states leaching measurements still need to be carried out - no quantitative data."}
   - {id: weigelt2020, doi: null, status: verified, rows: 0,
      note: "Batch-6. RWTH Aachen dissertation (FZ Juelich IEK-6, Energie & Umwelt 544, ISBN 978-3-95806-559-8), defended 2020-09-04. Synthesis + structural characterisation (XRD/PDF/Raman/IR/MAS-NMR) of Cs/Sr geopolymers. No adsorption or leaching chapter."}
+  - {id: vandevenne2018, doi: "10.1016/j.jnucmat.2018.08.045", status: verified, rows: 14,
+     note: "Batch-7, closes Q12. SIX DESIGNED Ca-Si-Al slag compositions (+1 replicate) from analytical reagents, one protocol (2 M NaOH, L/S 0.30, 1 wt%, 28 d / 90 C tank test). Cs+Sr % released, Table 2. The composition-varying single-protocol design the literature rarely provides -> F41."}
+  - {id: jain2022, doi: "10.1016/j.cemconcomp.2022.104679", status: verified, rows: 5,
+     note: "Batch-7. Fly-ash geopolymer, 5 M NaOH, 90 C/7 d; Cs 2-20 wt% loading series with LX (ANSI/ANS-16.1) and BET, Table 3 (corroborated in the Conclusions). LX RISES with loading via in-situ pollucite -> F42."}
   - {id: muracchioli2019, doi: null, status: rejected, rows: 0,
      note: "Batch-6. MSc thesis, Univ. Padua 2019, porous/3D-printed geopolymers for water purification. OUT OF SCOPE: adsorbates are heavy metals (Cu, Ni, Pb, Cd), not Cs/Sr."}
 
@@ -1122,6 +1126,53 @@ findings:
       lead this batch surfaced, Vandevenne 2018 (Q12).'
     status: resolved
 
+  - id: F41
+    severity: high
+    title: Calcium competition quantified - in Ca-bearing slag AAMs, Ca/(Si+Al) predicts Sr retention
+      almost perfectly (r = +0.99), giving F38's competition mechanism a number
+    evidence: 'Vandevenne et al. 2018 (J. Nucl. Mater. 510, 575-584; DOI 10.1016/j.jnucmat.2018.08.045),
+      acquired 2026-07-24, closing Q12. Six DESIGNED synthetic Ca-Si-Al slag compositions (+1 replicate)
+      made from analytical-grade reagents - so precursor composition is a controlled variable and trace
+      elements are excluded - all activated identically (2 M NaOH, L/S 0.30, 1 wt% loading) and leached
+      by one 28 d / 90 C protocol. Ingested as 14 Pool B rows (Table 2, % released; lower is better).
+      Computed inline over those rows: r(Ca/(Si+Al), %Sr released) = +0.989 (n=7) and r(Ca/(Si+Al),
+      %Cs released) = +0.826, while r(Si/Al, %Cs released) = +0.617 and r(Si/Al, %Sr released) = +0.376.
+      This reproduces the authors own qualitative statement exactly: "Cs+ immobilisation is higher at
+      lower Si/Al and Ca/(Si+Al) ratios. Immobilisation of Sr2+ is higher at a lower Ca/(Si+Al) ratio and
+      independent of Si/Al ratio." The paper ALSO reports, independently of us, that "no clear correlation
+      could be established between the BET values and the immobilisation capacities".'
+    action: 'Three things at once. (1) It puts a NUMBER on the F38 mechanism: Ca2+ and Sr2+ are both
+      alkaline earths competing for the same charge-balancing sites, so where Ca is abundant Sr cannot be
+      retained - and the association is near-deterministic (r = +0.99). The split by nuclide is
+      mechanistically coherent: Sr2+ is governed overwhelmingly by Ca competition, while Cs+ (monovalent,
+      substituting for Na+) is governed more by framework Al availability via Si/Al. (2) The Si/Al
+      direction agrees with our descriptor - lower Si/Al, i.e. MORE framework Al, retains better - now in
+      an independent laboratory, a different material class and the immobilisation (not adsorption)
+      regime. (3) It independently reproduces our BET null result. CAUTION, stated: this is a Ca-BEARING
+      slag system, exactly the class F19/D12 excludes from the ARI descriptor domain; the rows carry
+      ca_si_al explicitly and must not be pooled with the Ca-free framework gels. n=7 compositions, one
+      laboratory, one protocol - strong within-study, not a cross-laboratory claim (F36).'
+    status: resolved
+
+  - id: F42
+    severity: medium
+    title: A crystalline route to the same chemistry - pollucite formation makes Cs retention IMPROVE with
+      waste loading, inverting the usual dose-response
+    evidence: 'Jain, Banthia & Troczynski 2022 (Cem. Concr. Compos. 133, 104679), acquired 2026-07-24.
+      NaOH-activated fly-ash geopolymer, cured 90 C / 7 d, Cs doped at 2-20 wt%, leached per ANSI/ANS-16.1.
+      Table 3 (corroborated verbatim in the Conclusions): LX = 12.5, 11.5, 12.3, 13.4, 14.5 at 2, 5, 8, 11,
+      20 wt% Cs. LX falls from 2 to 5 wt% and then RISES steadily to 20 wt%, which the authors attribute to
+      in-situ crystallisation of POLLUCITE (CsAlSi2O6) at loadings >= 8 wt%. Ingested as 5 Pool B rows.'
+    action: 'Pollucite is a caesium ALUMINOSILICATE in which Cs+ balances the charge of tetrahedral Al -
+      the same charge-balancing chemistry the Al^IV descriptor counts (F34/F38), reached by a crystalline
+      rather than a gel route. Records a second, distinct retention pathway alongside gel ion-exchange, and
+      a boundary on any monotonic dose-response assumption. CONFOUND RECORDED IN CODE: BET rises with
+      dosage too (9.45 -> 40.00 m2/g) because pollucite forms, so the positive BET-LX association here is
+      DRIVEN BY DOSAGE and is not evidence that surface area causes retention; it neither supports nor
+      contradicts the Pool A BET result, which is a different regime. Loading remains a control variable
+      (schema trap 2): a model that mistook it for a target would learn a spurious "more waste is better".'
+    status: resolved
+
 # =====================================================================
 # DECISIONS
 # =====================================================================
@@ -1160,4 +1211,5 @@ open_questions:
   - {id: Q4, question: "Acquire the 2 paywalled sources (Baek 2018, Next Sustainability 2025)?", blocks: [M6]}
   - {id: Q6, question: "Acquire Kim 2026, Yildirim 2024, Duque-Redondo 2023 to verify the context sheets?", blocks: [master.other_sheets]}
   - {id: Q5, question: "Purge the 54 MB blobs still reachable via GitHub PR refs?", blocks: []}
-  - {id: Q12, question: "Acquire Vandevenne et al. 2018 (DOI 10.1016/j.jnucmat.2018.08.045), J. Nucl. Mater. 510, 575-584 - 'Alkali-activated materials for radionuclide immobilisation and the effect of precursor composition on Cs/Sr retention'. Surfaced by walkley2020 (F38), which cites it for Sr retention rising as Si/Al falls. It is the one lead in batch-6 that plausibly carries QUANTITATIVE Cs/Sr retention vs precursor composition. STATUS 2026-07-23: located and DOI confirmed via Crossref; reports 97.6% Cs / 99.9% Sr immobilisation at 7 d/20 C. Closed access (Unpaywall: 0 OA locations) - acquire via University of Aleppo institutional access, then verify against primary source before ingesting.", blocks: [M6]}
+  # Q12 RESOLVED 2026-07-24 -> F41: acquired, 14 Pool B rows ingested, Ca-competition quantified
+  # (was) - {id: Q12, question: "Acquire Vandevenne et al. 2018 (DOI 10.1016/j.jnucmat.2018.08.045), J. Nucl. Mater. 510, 575-584 - 'Alkali-activated materials for radionuclide immobilisation and the effect of precursor composition on Cs/Sr retention'. Surfaced by walkley2020 (F38), which cites it for Sr retention rising as Si/Al falls. It is the one lead in batch-6 that plausibly carries QUANTITATIVE Cs/Sr retention vs precursor composition. STATUS 2026-07-23: located and DOI confirmed via Crossref; reports 97.6% Cs / 99.9% Sr immobilisation at 7 d/20 C. Closed access (Unpaywall: 0 OA locations) - acquire via University of Aleppo institutional access, then verify against primary source before ingesting.", blocks: [M6]}

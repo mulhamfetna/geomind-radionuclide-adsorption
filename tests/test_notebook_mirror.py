@@ -42,6 +42,6 @@ def test_headline_and_counts_match():
     assert set(hl) == set(hr)
     for k in hr:
         assert hl[k] == pytest.approx(hr[k], rel=1e-6, abs=1e-6)
-    assert len(LITE.load_pool("A")) == 141 and len(LITE.load_pool("B")) == 54
-    assert len(LITE.load_findings()) == 40 and len(LITE.load_decisions()) == 17
+    assert len(LITE.load_pool("A")) == 141 and len(LITE.load_pool("B")) == 73
+    assert len(LITE.load_findings()) == 42 and len(LITE.load_decisions()) == 17
     assert len(LITE.load_audit_summary()) == 91

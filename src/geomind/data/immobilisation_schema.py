@@ -158,8 +158,17 @@ COLUMNS: list[str] = [
     "surface_area_volume_ratio",
     # pore structure — the transport pathway; Jang 2016 links these directly to De
     "porosity_pct", "capillary_pore_volume_mL_g", "critical_pore_diameter_nm",
+    # BET specific surface area. Present so the surface-area hypothesis can be tested in
+    # the immobilisation regime too, as it was in Pool A (where it is NEGATIVELY related
+    # to uptake). Beware confounding: in Jain 2022 both BET and LX rise with Cs dosage.
+    "bet_m2_g",
     # matrix composition
     "si_al", "na_al", "k_al", "ca_al", "precursor", "activator", "activator_molarity",
+    # Ca/(Si+Al) — the ratio Ca-bearing slag studies actually report. Kept SEPARATE from
+    # ca_al: they are different quantities and mapping one onto the other would be the
+    # kind of definition error this schema exists to prevent. Carries the F19/D12
+    # structural precondition into the pool, so Ca-bearing rows stay auditable.
+    "ca_si_al",
     # structure — the reason Pool B exists at all
     "q4_4al_pct", "q4_3al_pct", "q4_2al_pct", "q4_1al_pct", "q4_0al_pct",
     "si_al_nmr", "ari", "al_iv_pct", "cn_sr_exafs", "chemical_shift_ppm",
@@ -170,8 +179,8 @@ COLUMNS: list[str] = [
 NUMERIC: list[str] = [
     "loading_wt_pct", "retention_value", "retention_std", "censoring_bound",
     "duration_days", "ph_leachant", "temperature_K", "surface_area_volume_ratio",
-    "porosity_pct", "capillary_pore_volume_mL_g", "critical_pore_diameter_nm",
-    "si_al", "na_al", "k_al", "ca_al", "activator_molarity",
+    "porosity_pct", "capillary_pore_volume_mL_g", "critical_pore_diameter_nm", "bet_m2_g",
+    "si_al", "na_al", "k_al", "ca_al", "ca_si_al", "activator_molarity",
     "q4_4al_pct", "q4_3al_pct", "q4_2al_pct", "q4_1al_pct", "q4_0al_pct",
     "si_al_nmr", "ari", "al_iv_pct", "cn_sr_exafs", "chemical_shift_ppm",
 ]

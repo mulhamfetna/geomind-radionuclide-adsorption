@@ -570,3 +570,163 @@ def _from_frederickx2025() -> pd.DataFrame:
 
 
 ADAPTERS["frederickx2025"] = _from_frederickx2025
+
+
+# ---------------------------------------------------------------------------
+# Vandevenne et al., J. Nucl. Mater. 510 (2018) 575-584
+# "Alkali-activated materials for radionuclide immobilisation and the effect of
+#  precursor composition on Cs/Sr retention"
+#
+# Acquired 2026-07-24, closing open question Q12 (surfaced by walkley2020 / F38).
+#
+# WHY THIS SOURCE MATTERS. Six synthetic Ca-Si-Al slag compositions (+1 replicate)
+# made from analytical-grade reagents, so precursor composition is a DESIGNED
+# variable and trace-element effects are excluded - the composition-varying,
+# single-protocol design the literature almost never provides. Every sample is
+# activated identically (2 M NaOH, L/S 0.30, 1 wt% loading) and leached by the same
+# 28 d / 90 C tank test, so the compositions are mutually comparable.
+#
+# STRUCTURAL CLASS (F19/D12). These are Ca-BEARING slag systems, Ca/(Si+Al) 0.42-1.0.
+# They are NOT the Ca-free framework gels the ARI descriptor is validated on, so the
+# rows carry `ca_si_al` explicitly and are classed slag_blend. Do not pool them with
+# the metakaolin framework gels.
+# ---------------------------------------------------------------------------
+VANDEVENNE_DOI = "10.1016/j.jnucmat.2018.08.045"
+
+#: Table 1 - designed slag compositions: (Si/Al, Ca/(Si+Al)) molar ratios.
+VANDEVENNE_TABLE1 = {
+    "AAM_1":    (0.95, 0.42),
+    "AAM_1.1":  (1.1,  0.43),
+    "AAM_2":    (2.0,  0.44),
+    "AAM_2.4":  (2.4,  0.59),
+    "AAM_3.4":  (3.4,  1.0),
+    "AAM_3.4b": (3.4,  1.0),   # deliberate replicate of AAM_3.4
+    "AAM_5.1":  (5.1,  0.45),
+}
+
+#: Table 2 - percentage of introduced nuclide RELEASED after 28 d at 90 C,
+#: as (value, standard deviation over 3 samples). Lower is better retention.
+VANDEVENNE_TABLE2 = {
+    "AAM_1":    {"Cs": (14.0, 2.0),  "Sr": (1.11, 0.07)},
+    "AAM_1.1":  {"Cs": (7.8,  0.3),  "Sr": (0.50, 0.04)},
+    "AAM_2":    {"Cs": (20.1, 0.5),  "Sr": (0.74, 0.3)},
+    "AAM_2.4":  {"Cs": (40.0, 2.0),  "Sr": (1.4,  0.2)},
+    "AAM_3.4":  {"Cs": (46.0, 2.0),  "Sr": (4.9,  0.5)},
+    "AAM_3.4b": {"Cs": (40.9, 0.7),  "Sr": (5.0,  0.4)},
+    "AAM_5.1":  {"Cs": (27.8, 0.9),  "Sr": (0.9,  0.1)},
+}
+
+
+def _from_vandevenne2018() -> pd.DataFrame:
+    """Table 2: % of introduced Cs+/Sr2+ released after 28 d leaching at 90 C.
+
+    `retention_value` is a LEACHED PERCENT, so LOWER IS BETTER - the opposite
+    direction to the leachability index. HIGHER_IS_BETTER records that sign, and
+    the schema refuses to merge the two target types.
+    """
+    rows = []
+    for matrix, (si_al, ca_si_al) in VANDEVENNE_TABLE1.items():
+        for nuclide, (value, sd) in VANDEVENNE_TABLE2[matrix].items():
+            rows.append(
+                {
+                    "sample_id": f"vandevenne2018_{matrix}_{nuclide}",
+                    "matrix_name": matrix,
+                    "matrix_class": MatrixClass.SLAG_BLEND.value,
+                    "nuclide": nuclide,
+                    "loading_wt_pct": 1.0,          # 1 wt% for every sample
+                    "retention_value": value,
+                    "retention_std": sd,
+                    "retention_type": RetentionType.LEACHED_PERCENT.value,
+                    "censored": Censoring.NONE.value,
+                    "censoring_bound": None,
+                    "leachant": "milli_q_water",
+                    "duration_days": 28.0,
+                    "temperature_K": 363.15,        # 90 C tank test
+                    "si_al": si_al,
+                    "ca_si_al": ca_si_al,           # F19: Ca-bearing system
+                    "activator": "sodium_hydroxide",   # 2 M NaOH, L/S 0.30
+                    "precursor": "synthetic_ca_si_al_slag",
+                    "provenance_doi": VANDEVENNE_DOI,
+                    "source_label": "vandevenne2018",
+                    "leach_state": "n/a",
+                    "from_figure": False,           # Table 2
+                    "value_repeated": matrix == "AAM_3.4b",   # deliberate replicate
+                }
+            )
+    return pd.DataFrame(rows)
+
+
+ADAPTERS["vandevenne2018"] = _from_vandevenne2018
+
+
+# ---------------------------------------------------------------------------
+# Jain, Banthia & Troczynski, Cem. Concr. Compos. 133 (2022) 104679
+# "Leaching of immobilized cesium from NaOH-activated fly ash-based geopolymers"
+#
+# Acquired 2026-07-24 (batch-7). 5 M NaOH-activated fly-ash geopolymer, cured
+# 90 C / 7 d, Cs doped in at 2-20 wt%, leached in deionised water per ANSI/ANS-16.1.
+#
+# WHY IT IS INTERESTING. LX RISES with Cs loading (11.5 -> 14.5), the opposite of the
+# usual dose-response, because at >= 8 wt% Cs the authors observe in-situ crystallisation
+# of POLLUCITE (CsAlSi2O6) - a crystalline caesium ALUMINOSILICATE in which Cs+ balances
+# the charge of tetrahedral Al. That is the same charge-balancing chemistry the Al^IV
+# descriptor counts (F34/F38), reached through a crystalline rather than a gel route.
+#
+# CONFOUND, STATED EXPLICITLY. BET rises with dosage too (9.45 -> 40.00 m2/g) simply
+# because pollucite forms, so the positive BET-LX association here is DRIVEN BY DOSAGE
+# and is not evidence that surface area causes retention. It does not contradict the
+# Pool A result that BET is negatively related to uptake; the two are not comparable.
+# ---------------------------------------------------------------------------
+JAIN_DOI = "10.1016/j.cemconcomp.2022.104679"
+
+#: Table 3 (p5): pore-structure parameters and LX for 5 M NaOH FA-GP cured 90 C / 7 d.
+#: dosage wt% -> (BET m2/g, pore volume cc/g, pore volume % NLDFT, LX).
+#: Every LX is stated a SECOND time in the Conclusions (p8) - both were read and agree:
+#: "20 (LX = 14.5) > 11 (LX = 13.4) > 2 (LX = 12.5) > 8 (LX = 12.3) > 5 (LX = 11.5)".
+JAIN_TABLE3 = {
+    2.0:  (13.66, 0.028, 4.2, 12.5),
+    5.0:  (9.45,  0.017, 2.5, 11.5),
+    8.0:  (11.43, 0.027, 4.0, 12.3),
+    11.0: (21.77, 0.034, 5.1, 13.4),
+    20.0: (40.00, 0.061, 9.1, 14.5),
+}
+
+
+def _from_jain2022() -> pd.DataFrame:
+    """Table 3: leachability index vs Cs loading, with BET and pore volume.
+
+    `duration_days` is left NULL: the paper states the test followed ANSI/ANS-16.1
+    but never gives an explicit total leaching duration, and ANS-16.1 admits more
+    than one schedule. Recording a guess would be worse than recording nothing.
+    """
+    rows = []
+    for loading, (bet, pore_v, _pore_pct, lx) in JAIN_TABLE3.items():
+        rows.append(
+            {
+                "sample_id": f"jain2022_Cs{loading:g}",
+                "matrix_name": f"FA-GP {loading:g} wt% Cs",
+                "matrix_class": MatrixClass.FLY_ASH_GEOPOLYMER.value,
+                "nuclide": "Cs",
+                "loading_wt_pct": loading,      # CONTROL variable, never a target
+                "retention_value": lx,
+                "retention_type": RetentionType.LEACHABILITY_INDEX.value,
+                "censored": Censoring.NONE.value,
+                "censoring_bound": None,
+                "leachant": "deionised_water",
+                "duration_days": None,          # see docstring - not stated
+                "bet_m2_g": bet,
+                "capillary_pore_volume_mL_g": pore_v,
+                "activator": "sodium_hydroxide",     # 5 M NaOH
+                "activator_molarity": 5.0,
+                "precursor": "fly_ash",
+                "provenance_doi": JAIN_DOI,
+                "source_label": "jain2022",
+                "leach_state": "n/a",
+                "from_figure": False,           # Table 3, corroborated in the Conclusions
+                "value_repeated": False,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+ADAPTERS["jain2022"] = _from_jain2022

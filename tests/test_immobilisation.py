@@ -124,7 +124,9 @@ def test_validator_faults_a_declared_type_with_no_value():
 def test_loading_is_a_control_variable_with_only_designed_levels():
     df = M.build()
     levels = sorted(df["loading_wt_pct"].dropna().unique())
-    assert levels == [0.0, 1.0, 2.0, 3.0, 5.0], "loadings are set by the experimenter"
+    # Jain 2022 adds a designed 2-20 wt% Cs dosage series (8, 11, 20)
+    assert levels == [0.0, 1.0, 2.0, 3.0, 5.0, 8.0, 11.0, 20.0], \
+        "loadings are set by the experimenter"
 
 
 # --------------------------------------------------------------------------
@@ -133,10 +135,11 @@ def test_loading_is_a_control_variable_with_only_designed_levels():
 
 def test_pool_shape():
     df = M.build()
-    assert len(df) == 54
-    assert set(df["source_label"]) == {"kim2026", "nevin2026", "kurumisawa2021", "jang2016", "stanojevic2025", "komljenovic2020", "arbelhaddad2022", "frederickx2025"}
-    # 8 Kim/Nevin + 10 Kurumisawa + 14 Jang + 2 Stanojevic + 2 Komljenovic + 6 Arbel + 4 Frederickx = 46
-    assert df["retention_value"].notna().sum() == 46
+    assert len(df) == 73
+    assert set(df["source_label"]) == {"kim2026", "nevin2026", "kurumisawa2021", "jang2016", "stanojevic2025", "komljenovic2020", "arbelhaddad2022", "frederickx2025", "vandevenne2018", "jain2022"}
+    # 8 Kim/Nevin + 10 Kurumisawa + 14 Jang + 2 Stanojevic + 2 Komljenovic + 6 Arbel
+    # + 4 Frederickx + 14 Vandevenne + 5 Jain = 65
+    assert df["retention_value"].notna().sum() == 65
 
 
 def test_nevin_cs_rows_are_present():
@@ -159,7 +162,8 @@ def test_all_li_values_clear_the_regulatory_floor():
     df = M.build()
     li = df[df["retention_type"] == S.RetentionType.LEACHABILITY_INDEX.value]
     measured = li["retention_value"].dropna()  # censored rows have no value to compare
-    assert len(measured) == 30  # 8 Kim/Nevin + 14 Jang + 2 Stanojevic + 2 Komljenovic + 4 Frederickx
+    # 8 Kim/Nevin + 14 Jang + 2 Stanojevic + 2 Komljenovic + 4 Frederickx + 5 Jain
+    assert len(measured) == 35
     assert (measured >= S.ANS_16_1_MIN_LI).all()
     assert "li_below_ans_16_1" not in set(S.validate(df)["issue"])
 
@@ -292,5 +296,76 @@ def test_jang_portland_cement_baseline_is_flagged_separable():
 
 def test_pool_b_shape_after_jang():
     df = M.build()
-    assert len(df) == 54
-    assert set(df["source_label"]) == {"kim2026", "nevin2026", "kurumisawa2021", "jang2016", "stanojevic2025", "komljenovic2020", "arbelhaddad2022", "frederickx2025"}
+    assert len(df) == 73
+    assert set(df["source_label"]) == {"kim2026", "nevin2026", "kurumisawa2021", "jang2016", "stanojevic2025", "komljenovic2020", "arbelhaddad2022", "frederickx2025", "vandevenne2018", "jain2022"}
+
+
+# ---------------------------------------------------------------------------
+# Vandevenne 2018 - J. Nucl. Mater. 510, 575-584 (batch-7, closes Q12)
+# ---------------------------------------------------------------------------
+def test_vandevenne2018_ingests_seven_compositions_for_both_nuclides():
+    from geomind.data.merge_immobilisation import _from_vandevenne2018
+    df = _from_vandevenne2018()
+    assert len(df) == 14                       # 7 compositions x {Cs, Sr}
+    assert set(df["nuclide"]) == {"Cs", "Sr"}
+    assert set(df["retention_type"]) == {"leached_pct"}
+    assert (df["loading_wt_pct"] == 1.0).all()  # 1 wt% waste loading throughout
+
+
+def test_vandevenne2018_matches_the_published_table_2():
+    from geomind.data.merge_immobilisation import _from_vandevenne2018
+    df = _from_vandevenne2018().set_index(["matrix_name", "nuclide"])
+    # Table 2: percentage released after 28 d at 90 C
+    assert df.loc[("AAM_1.1", "Cs"), "retention_value"] == 7.8      # best Cs
+    assert df.loc[("AAM_3.4", "Cs"), "retention_value"] == 46.0     # worst Cs
+    assert df.loc[("AAM_1.1", "Sr"), "retention_value"] == 0.5      # best Sr
+    assert df.loc[("AAM_3.4b", "Sr"), "retention_value"] == 5.0
+    # Table 1 composition pairing
+    assert df.loc[("AAM_1.1", "Cs"), "si_al"] == 1.1
+    assert df.loc[("AAM_5.1", "Cs"), "si_al"] == 5.1
+
+
+def test_vandevenne2018_is_a_ca_bearing_system_and_says_so():
+    """F19: these are Ca-Si-Al slags. The row must carry Ca/(Si+Al) so the
+    structural precondition is auditable, and must not be silently pooled with
+    the Ca-free framework gels."""
+    from geomind.data.merge_immobilisation import _from_vandevenne2018
+    df = _from_vandevenne2018()
+    assert df["ca_si_al"].notna().all()
+    assert (df["matrix_class"] == "slag_blend").all()
+
+
+# ---------------------------------------------------------------------------
+# Jain 2022 - Cem. Concr. Compos. 133, 104679 (batch-7)
+# ---------------------------------------------------------------------------
+def test_jain2022_is_a_cs_loading_series_with_leachability_indices():
+    from geomind.data.merge_immobilisation import _from_jain2022
+    df = _from_jain2022()
+    assert len(df) == 5                                   # 5 Cs dosages
+    assert set(df["nuclide"]) == {"Cs"}
+    assert set(df["retention_type"]) == {"leachability_index"}
+    assert sorted(df["loading_wt_pct"]) == [2.0, 5.0, 8.0, 11.0, 20.0]
+
+
+def test_jain2022_matches_table_3_and_the_conclusions():
+    """Table 3 and the Conclusions state the same five LX values independently;
+    both were checked against the PDF before ingest."""
+    from geomind.data.merge_immobilisation import _from_jain2022
+    df = _from_jain2022().set_index("loading_wt_pct")
+    assert df.loc[2.0, "retention_value"] == 12.5
+    assert df.loc[5.0, "retention_value"] == 11.5      # the minimum
+    assert df.loc[8.0, "retention_value"] == 12.3
+    assert df.loc[11.0, "retention_value"] == 13.4
+    assert df.loc[20.0, "retention_value"] == 14.5     # the maximum
+    assert df.loc[20.0, "bet_m2_g"] == 40.00
+
+
+def test_jain2022_loading_is_a_control_variable_not_a_target():
+    """Trap 2 in the schema: loading is set by the experimenter. Here LX RISES
+    with loading (pollucite crystallisation), so a model that mistook loading for
+    a target would learn a spurious 'more waste is better' rule."""
+    from geomind.data.merge_immobilisation import _from_jain2022
+    from geomind.data.immobilisation_schema import validate, conform
+    df = _from_jain2022()
+    issues = validate(conform(df))
+    assert "loading_as_target" not in set(issues["issue"]) if len(issues) else True

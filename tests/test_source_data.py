@@ -25,7 +25,7 @@ def test_source_data_matches_the_published_numbers():
     assert len(d["Fig2c_causal_test"]) == 7
     # the audited pools
     assert len(d["PoolA_adsorption"]) == 141
-    assert len(d["PoolB_immobilisation"]) == 54
+    assert len(d["PoolB_immobilisation"]) == 73
     # pooled Cs Langmuir set behind Fig 6b
     assert len(d["Fig6_pooling_limit"]) == 23
 
