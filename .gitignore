@@ -78,3 +78,13 @@ docs/correspondence/
 
 # Personal working notes — kept locally, never published.
 notes.md
+
+# --- Submission deliverables -------------------------------------------------
+# The bibliography contains VERBATIM PUBLISHER ABSTRACTS, which remain the
+# copyright of their publishers. It is a working file for the authors' own
+# submission and must not enter the public deposit. Regenerate with
+# `python manuscript/build_bibliography.py`.
+manuscript/GEOMIND-R-bibliography.*
+
+# Build artefact — regenerate with `python manuscript/export_figures.py`
+manuscript/GEOMIND-R-figures-submission.zip

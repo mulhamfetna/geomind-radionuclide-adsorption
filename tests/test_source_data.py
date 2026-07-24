@@ -37,3 +37,17 @@ def test_write_xlsx_produces_one_workbook_with_every_sheet(tmp_path):
     wb = openpyxl.load_workbook(out)
     assert "Fig3_forward_model" in wb.sheetnames
     assert "README" in wb.sheetnames          # a sheet explaining provenance + licence
+
+
+def test_complete_database_export_includes_the_excluded_rows():
+    """The export must document what was removed, not only what was kept."""
+    from geomind import database_export as DB
+    s = DB.build_sheets()
+    assert len(s["01 Pool A adsorption"]) == 141
+    assert len(s["02 Pool B immobilisation"]) == 73
+    assert len(s["03 Excluded rows"]) >= 8
+    assert set(s["03 Excluded rows"]["action"]) <= {"REMOVED", "RELABELLED", "RE-TYPED"}
+    assert (s["03 Excluded rows"]["reason"].str.len() > 20).all()
+    assert len(s["04 Audit trail"]) == 91
+    assert len(s["05 Findings"]) == 46
+    assert len(s["12 Meta not admitted"]) >= 7
