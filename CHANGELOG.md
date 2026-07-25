@@ -4,6 +4,29 @@ All notable changes to this project are documented here. Versions follow
 [semantic versioning](https://semver.org/); each tagged release is archived on Zenodo under the
 concept DOI [10.5281/zenodo.21510123](https://doi.org/10.5281/zenodo.21510123).
 
+## [1.3.0] — 2026-07-25
+
+**DOI:** software [10.5281/zenodo.21546029](https://doi.org/10.5281/zenodo.21546029) · dataset [10.5281/zenodo.21540569](https://doi.org/10.5281/zenodo.21540569)
+
+The submission package. The database is given its own **dataset** record on Zenodo (CC BY 4.0),
+cross-linked to this software record in both directions.
+
+### Added
+- **Dataset deposit tooling** (`geomind.dataset_deposit`) — a self-describing dataset bundle
+  (categorised database, both pools as CSVs, data dictionary, README, CC BY 4.0, dataset-typed
+  citation), deposited to mint the dataset DOI 10.5281/zenodo.21540569.
+- **Corpus bibliography** (`manuscript/build_bibliography.py`) — 30 references; 26 verbatim
+  abstracts each verified against the paper's own PDF, with a faithful Arabic translation.
+- **Submission figures** at 600 dpi + vector (PDF/EPS); the **complete categorised database**
+  workbook (20 sheets, nothing dropped — includes the audit-excluded rows and reasons).
+
+### Changed
+- The manuscript's Data Availability statement, the README and `CITATION.cff` cite both the
+  dataset and software DOIs; `.zenodo.json` carries the reverse cross-link to the dataset.
+
+### Verified
+- **207 tests passing**; headline numbers unchanged and re-verified from a clean checkout by CI.
+
 ## [1.2.0] — 2026-07-24
 
 **DOI:** [10.5281/zenodo.21536768](https://doi.org/10.5281/zenodo.21536768)
