@@ -80,6 +80,9 @@ def build_bundle() -> dict:
         # Study-level meta-analysis (F44/F45/F46). Precomputed here because engine_lite
         # has no access to the geomind package; the mirror test asserts it matches.
         "meta": E.meta_evidence(),
+        # Robustness & sensitivity (analytical checks + S3 [Al^IV]-uncertainty). Precomputed
+        # for the same reason; the mirror test asserts the notebook shows the same numbers.
+        "robustness": E.robustness_evidence(),
     }
 
 

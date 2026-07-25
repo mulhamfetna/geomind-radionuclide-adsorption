@@ -267,6 +267,17 @@ def meta_evidence() -> dict:
     return _bundle()["meta"]
 
 
+def robustness_evidence() -> dict:
+    """Robustness & sensitivity (analytical checks + S3 [Al^IV]-uncertainty), precomputed.
+
+    The core relationship is small (n=7), so it is tested two ways: analytical robustness
+    (data fixed, method varied) and the S3 propagation of the reported [Al^IV] measurement
+    uncertainty. Precomputed into the bundle because engine_lite has no geomind access; the
+    mirror test asserts these numbers match the desktop engine.
+    """
+    return _bundle()["robustness"]
+
+
 def rerun_headline_numbers() -> dict:
     f = _fwd()
     pooled = pooled_loo_r2(pooling_sources())

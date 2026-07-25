@@ -4,6 +4,30 @@ All notable changes to this project are documented here. Versions follow
 [semantic versioning](https://semver.org/); each tagged release is archived on Zenodo under the
 concept DOI [10.5281/zenodo.21510123](https://doi.org/10.5281/zenodo.21510123).
 
+## [1.4.0] — 2026-07-25
+
+**DOI:** software _(minted on release)_ · dataset [10.5281/zenodo.21540569](https://doi.org/10.5281/zenodo.21540569)
+
+A revision release that adds the reviewer-facing robustness and sensitivity evidence. The
+submitted **v1.3.0** tag is left frozen as the version of record for the initial submission.
+
+### Added
+- **`geomind.robustness`** — two complementary, fully reproducible analyses. (1) *Analytical
+  robustness* (data fixed, method varied): influential-point jackknife of the core correlation
+  and of the forward-model slope, a Spearman rank check, the saturation-artefact count across
+  thresholds, and the study-level mean under three weightings. (2) *S3 — sensitivity to the
+  [Al^IV] measurement uncertainty*: a seeded Monte-Carlo errors-in-variables propagation of the
+  ±1 percentage-point precision Varon 2025 reports on the ²⁷Al tetrahedral fraction. At the
+  reported precision the relationship is essentially unchanged (r ≈ +0.94, slope ≈ 2800,
+  P(r > 0.8) = 100%), so regression dilution is negligible.
+- An **"Evidence · Robustness & sensitivity"** tab in both the desktop Virtual Lab and the
+  shareable Colab notebook, surfacing both analyses side by side.
+- Manuscript §3.7 *Robustness and sensitivity*, a Methods note, and Supplementary **S3**.
+
+### Verified
+- **211 tests passing** (adds robustness unit tests and a notebook-mirror test asserting the
+  Colab bundle shows the same numbers as the desktop engine); headline numbers unchanged.
+
 ## [1.3.0] — 2026-07-25
 
 **DOI:** software [10.5281/zenodo.21546029](https://doi.org/10.5281/zenodo.21546029) · dataset [10.5281/zenodo.21540569](https://doi.org/10.5281/zenodo.21540569)

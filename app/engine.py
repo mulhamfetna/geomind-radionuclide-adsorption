@@ -351,3 +351,14 @@ def meta_evidence() -> dict:
         "rejected": list(_M.REJECTED_CANDIDATES),
         "criteria": dict(_M.INCLUSION_CRITERIA),
     }
+
+
+def robustness_evidence() -> dict:
+    """Robustness and sensitivity results (analytical checks + the S3 [Al^IV]-uncertainty
+    propagation). See geomind.robustness and manuscript §3.7 / Supplementary S3."""
+    from geomind import robustness as _R
+    return {
+        "analytical": _R.analytical_robustness(),
+        "s3_reported": _R.aliv_uncertainty_sensitivity(include_xrf=False, draws=4000),
+        "s3_conservative": _R.aliv_uncertainty_sensitivity(include_xrf=True, draws=4000),
+    }

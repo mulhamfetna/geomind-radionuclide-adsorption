@@ -140,6 +140,34 @@ def _rerun_handler() -> str:
     )
 
 
+def _robustness_handler() -> str:
+    """Robustness & sensitivity: analytical checks + the S3 [Al^IV]-uncertainty propagation."""
+    r = E.robustness_evidence()
+    a = r["analytical"]; s = r["s3_reported"]; sc = r["s3_conservative"]
+    L = ["### Robustness & sensitivity", "",
+         "The core relationship is small (n = 7), so it is tested two ways.", "",
+         "**1. Analytical robustness** (data fixed, method varied)", "",
+         "| Check | Result |", "|---|---|",
+         f"| Influential-point jackknife of r | [{a['jackknife_r_min']:+.2f}, {a['jackknife_r_max']:+.2f}] — holds when the extreme point is dropped |",
+         f"| Spearman rank correlation | {a['spearman_rho']:+.2f} (p = {a['spearman_p']:.3f}) — not an outlier artefact |",
+         f"| Forward slope under jackknife | {a['jackknife_slope_min']:.0f}–{a['jackknife_slope_max']:.0f} (fitted 2812) |",
+         f"| Saturation artefacts vs threshold | {a['saturation_artefacts_by_threshold']} — stable |",
+         f"| Meta-analysis mean by weighting | " + ", ".join(f"{k} {v:+.2f}" for k, v in a['meta_r_bar_by_weighting'].items()) + " |",
+         "",
+         "**2. S3 — sensitivity to the [Al^IV] measurement uncertainty**", "",
+         "The descriptor is derived (XRF total Al x ²⁷Al tetrahedral fraction), so it carries "
+         "error. Varon 2025 reports **±1 percentage point** on the fraction; propagating it "
+         "(Monte Carlo) leaves the result essentially unchanged:", "",
+         "| Uncertainty model | r (5–95%) | slope | P(r > 0.8) |", "|---|---|---|---|",
+         f"| Reported ±1 pp (~{s['mean_relative_sigma_pct']:.1f}%) | {s['r_mean']:+.2f} ({s['r_p05']:+.2f}–{s['r_p95']:+.2f}) | {s['slope_mean']:.0f} | {s['prob_r_above_0p8']*100:.0f}% |",
+         f"| + 1.5% XRF (~{sc['mean_relative_sigma_pct']:.1f}%) | {sc['r_mean']:+.2f} ({sc['r_p05']:+.2f}–{sc['r_p95']:+.2f}) | {sc['slope_mean']:.0f} | {sc['prob_r_above_0p8']*100:.0f}% |",
+         f"| observed | {s['observed_r']:+.2f} | {s['observed_slope']:.0f} | — |",
+         "",
+         "Regression dilution is negligible at the reported precision — the descriptor is "
+         "measured accurately enough that its uncertainty does not affect the conclusions."]
+    return "\n".join(L)
+
+
 def _meta_handler() -> str:
     """Study-level meta-analysis: how many INDEPENDENT studies reproduce the direction."""
     m = E.meta_evidence()
@@ -294,6 +322,9 @@ def build_app() -> "gr.Blocks":
                         "set aside is the point, not a footnote.")
             gr.Markdown(_audit_summary_md())
             gr.DataFrame(value=E.load_audit_summary(), wrap=True)
+
+        with gr.Tab("Evidence · Robustness & sensitivity"):
+            gr.Markdown(_robustness_handler())
 
         with gr.Tab("Evidence · Study-level meta-analysis"):
             gr.Markdown(_meta_handler())

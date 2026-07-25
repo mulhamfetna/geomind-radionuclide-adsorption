@@ -309,7 +309,7 @@ This work is archived as **two cross-linked Zenodo records** — cite whichever 
   title   = {{GEOMIND-R: An Audited Database, Structural Descriptor and
              Forward Model for Radionuclide Uptake in Geopolymers}},
   year    = {2026},
-  version = {1.3.0},
+  version = {1.4.0},
   doi     = {10.5281/zenodo.21510123},
   url     = {https://doi.org/10.5281/zenodo.21510123}
 }

@@ -74,3 +74,10 @@ def test_meta_handler_reports_k_and_the_rejection_register():
     assert "REJECTED" in md.upper() or "not admitted" in md.lower()
     # the falsifiability controls must be visible, not buried
     assert "dye" in md.lower()
+
+
+def test_robustness_handler_reports_both_analyses():
+    md = L._robustness_handler()
+    assert "jackknife" in md.lower()
+    assert "S3" in md and "1 percentage point" in md
+    assert "P(r > 0.8)" in md or "P(r>0.8)" in md

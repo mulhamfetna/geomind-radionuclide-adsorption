@@ -200,3 +200,10 @@ def test_meta_evidence_rejections_are_two_directional():
     """A reviewer must be able to see we did not only reject inconvenient results."""
     dirs = {r["would_have"] for r in E.meta_evidence()["rejected"]}
     assert "supports" in dirs and "opposes" in dirs
+
+
+def test_robustness_evidence_exposes_both_analyses():
+    r = E.robustness_evidence()
+    assert r["analytical"]["jackknife_r_min"] > 0.8
+    assert r["s3_reported"]["prob_r_above_0p8"] > 0.99
+    assert r["s3_reported"]["r_mean"] > 0.9

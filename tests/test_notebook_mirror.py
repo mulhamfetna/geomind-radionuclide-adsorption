@@ -55,3 +55,21 @@ def test_meta_evidence_mirrors_the_desktop_engine():
     assert l["r_bar"] == pytest.approx(r["r_bar"], rel=1e-9)
     assert [s["label"] for s in l["studies"]] == [s["label"] for s in r["studies"]]
     assert len(l["rejected"]) == len(r["rejected"])
+
+
+def test_robustness_evidence_mirrors_the_desktop_engine():
+    """The notebook must show the SAME robustness/sensitivity numbers as the desktop app.
+
+    Analytical robustness is deterministic; the S3 Monte Carlo is seeded, so the bundle's
+    precomputed values must reproduce the live engine's exactly.
+    """
+    r, l = REAL.robustness_evidence(), LITE.robustness_evidence()
+    ra, la = r["analytical"], l["analytical"]
+    assert la["jackknife_r_min"] == pytest.approx(ra["jackknife_r_min"], rel=1e-9)
+    assert la["spearman_rho"] == pytest.approx(ra["spearman_rho"], rel=1e-9)
+    assert la["meta_r_bar_by_weighting"].keys() == ra["meta_r_bar_by_weighting"].keys()
+    for scenario in ("s3_reported", "s3_conservative"):
+        assert l[scenario]["r_mean"] == pytest.approx(r[scenario]["r_mean"], rel=1e-9)
+        assert l[scenario]["slope_mean"] == pytest.approx(r[scenario]["slope_mean"], rel=1e-9)
+        assert l[scenario]["prob_r_above_0p8"] == pytest.approx(
+            r[scenario]["prob_r_above_0p8"], rel=1e-9)
