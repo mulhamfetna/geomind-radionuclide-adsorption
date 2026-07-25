@@ -3,7 +3,7 @@
 [![Code: AGPL v3](https://img.shields.io/badge/code-AGPL--3.0-blue.svg)](LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](LICENSE-DATA)
 [![DOI](https://zenodo.org/badge/1309918660.svg)](https://zenodo.org/badge/latestdoi/1309918660)
-[![Tests](https://img.shields.io/badge/tests-202%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-207%20passing-brightgreen.svg)](tests/)
 
 An **audited, provenance-tracked meta-analysis database** of caesium and strontium uptake and
 immobilisation in geopolymers and alkali-activated materials — with the analysis pipeline, a
