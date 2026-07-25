@@ -1,6 +1,6 @@
 # 📌 PROGRESS — pinned status
 
-**Updated:** 2026-07-24 · **Branch:** `main` (public, AGPL-3.0 + CC BY 4.0) · **Pool A:** 141 rows / 14 sources · **Pool B:** 73 rows / 10 sources · **Findings:** 46 · **Tests:** 200 passing · **DOI:** [10.5281/zenodo.21510123](https://doi.org/10.5281/zenodo.21510123)
+**Updated:** 2026-07-24 · **Branch:** `main` (public, AGPL-3.0 + CC BY 4.0) · **Pool A:** 141 rows / 14 sources · **Pool B:** 73 rows / 10 sources · **Findings:** 46 · **Tests:** 200 passing · **Software DOI:** [10.5281/zenodo.21510123](https://doi.org/10.5281/zenodo.21510123) · **Dataset DOI:** [10.5281/zenodo.21540569](https://doi.org/10.5281/zenodo.21540569) (CC BY 4.0)
 
 
 > ## 📍 PINNED — DATA ACQUISITION IS CLOSED (2026-07-24)

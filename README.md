@@ -294,9 +294,12 @@ addresses above.
 If you use this software or dataset in your research, please cite it. Machine-readable metadata is
 in [`CITATION.cff`](CITATION.cff) — GitHub renders a **"Cite this repository"** button from it.
 
-- **Concept DOI — cite this one** (always resolves to the latest version):
+This work is archived as **two cross-linked Zenodo records** — cite whichever you used (or both):
+
+- **Software** (code, Virtual Lab, full history; AGPL-3.0) — concept DOI, always latest:
   [`10.5281/zenodo.21510123`](https://doi.org/10.5281/zenodo.21510123)
-- **This version (1.2.0):** [`10.5281/zenodo.21536768`](https://doi.org/10.5281/zenodo.21536768)
+- **Dataset** (the audited database; CC BY 4.0) — concept DOI, always latest:
+  [`10.5281/zenodo.21540569`](https://doi.org/10.5281/zenodo.21540569)
 
 **BibTeX**
 

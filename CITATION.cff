@@ -68,3 +68,6 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.21510124"
     description: "Version 1.0.0"
+  - type: doi
+    value: "10.5281/zenodo.21540569"
+    description: "Companion dataset record (all versions) — the audited database, CC BY 4.0"

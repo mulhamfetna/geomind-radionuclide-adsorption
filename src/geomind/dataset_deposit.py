@@ -33,7 +33,8 @@ _ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(_ROOT / "src"))
 
 OUT_DIR = _ROOT / "dist" / "GEOMIND-R-dataset"
-CONCEPT_DOI = "10.5281/zenodo.21510123"   # the software record this dataset accompanies
+CONCEPT_DOI = "10.5281/zenodo.21510123"        # the software record this dataset accompanies
+DATASET_CONCEPT_DOI = "10.5281/zenodo.21540569"   # this dataset's own concept DOI (all versions)
 
 #: Human-readable meaning + unit for every column that appears in the pools. Kept here (not
 #: scraped from docstrings) so the dictionary is stable and reviewer-ready.
@@ -205,9 +206,9 @@ Licensed **CC BY 4.0** — reuse freely **with attribution**. If you use this da
 derived from it, please cite:
 
 > Fetna, M. & Hammal, A. GEOMIND-R: audited database of caesium and strontium uptake and
-> immobilisation in geopolymers. Zenodo. https://doi.org/{CONCEPT_DOI}
+> immobilisation in geopolymers. Zenodo. https://doi.org/{DATASET_CONCEPT_DOI}
 
-(Replace with this dataset's own DOI once minted; see the deposit instructions.)
+The companion software record is at https://doi.org/{CONCEPT_DOI}.
 """
 
 
@@ -240,6 +241,7 @@ keywords:
   - radionuclide
   - meta-analysis
   - nuclear waste
+doi: "{DATASET_CONCEPT_DOI}"
 related-identifiers:
   - type: doi
     value: "{CONCEPT_DOI}"

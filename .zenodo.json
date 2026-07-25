@@ -32,6 +32,12 @@
   ],
   "related_identifiers": [
     {
+      "identifier": "10.5281/zenodo.21540569",
+      "relation": "isSupplementedBy",
+      "resource_type": "dataset",
+      "scheme": "doi"
+    },
+    {
       "identifier": "10.1039/d5dd00383k",
       "relation": "isDerivedFrom",
       "resource_type": "publication-article",
