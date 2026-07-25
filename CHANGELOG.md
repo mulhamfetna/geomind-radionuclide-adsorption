@@ -6,7 +6,7 @@ concept DOI [10.5281/zenodo.21510123](https://doi.org/10.5281/zenodo.21510123).
 
 ## [1.4.0] — 2026-07-25
 
-**DOI:** software _(minted on release)_ · dataset [10.5281/zenodo.21540569](https://doi.org/10.5281/zenodo.21540569)
+**DOI:** software [10.5281/zenodo.21555728](https://doi.org/10.5281/zenodo.21555728) · dataset [10.5281/zenodo.21540569](https://doi.org/10.5281/zenodo.21540569)
 
 A revision release that adds the reviewer-facing robustness and sensitivity evidence. The
 submitted **v1.3.0** tag is left frozen as the version of record for the initial submission.
